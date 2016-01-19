@@ -45,7 +45,7 @@ class Main extends MX_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('indexx');
+            $this->load->view('main/index');
         }
         else
         {
@@ -62,7 +62,7 @@ class Main extends MX_Controller
             $this->db->insert('expense',$data);
             $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Данные успешно добавлены</div>');
             
-            redirect('indexx'); 
+            redirect('main/index'); 
             var_dump($_POST);               
         }
     }	

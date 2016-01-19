@@ -1,7 +1,7 @@
       <div class="container">
          <div class="row">
             <div class="col-md-6">
-               <?=form_open("main/index");?>
+               <?=form_open("main/add_operation");?>
                <fieldset>
                   <div class="row">
                      <div class="col-xs-6">
