@@ -42,6 +42,14 @@
                   </div>
                </fieldset>
                <?=form_close();?>
+               <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+ 
+<script type="text/javascript">
+$(document).ready(function() {
+setTimeout ("$('.alert').hide('drop');", 3000);
+});
+</script>
+               <?php echo $this->session->flashdata('msg'); ?>
             </div>
             <div class="col-md-6">
                <table class="table">
