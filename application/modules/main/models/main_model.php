@@ -20,7 +20,7 @@ class Main_model extends CI_Model {
     	$result = $query->result();
 
     	$account_id = array('-Выберите счет-');
-    	$title_name = array('-Выберите счет-');
+    	$title_name = array('-Выберите счету-');
 
     	for ($i=0; $i < count($result); $i++) { 
     		array_push($account_id, $result[$i]->id);
