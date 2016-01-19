@@ -20,7 +20,11 @@ class Main_model extends CI_Model {
     	$result = $query->result();
 
     	$account_id = array('-Выберите счет-');
+<<<<<<< HEAD
     	$title_name = array('-Выберите счету-');
+=======
+    	$title_name = array('-Выберите счет-');
+>>>>>>> f4d768a23bee997339b906b70893b2152c3ce205
 
     	for ($i=0; $i < count($result); $i++) { 
     		array_push($account_id, $result[$i]->id);
@@ -39,7 +43,11 @@ class Main_model extends CI_Model {
     	$query = $this->db->get();
     	$result = $query->result();
 
+<<<<<<< HEAD
     	$category_id = array('-Выберите категоруиювуу-');
+=======
+    	$category_id = array('-Выберите категориюв-');
+>>>>>>> f4d768a23bee997339b906b70893b2152c3ce205
     	$category_name = array('-Выберите категорию-');
 
     	for ($i=0; $i < count($result); $i++) { 
