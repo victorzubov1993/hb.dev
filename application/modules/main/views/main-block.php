@@ -1,6 +1,6 @@
       <div class="container">
          <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6">               
                <?=form_open("main/add_operation");?>
                <fieldset>
                   <div class="row">
@@ -51,6 +51,18 @@
                <?php echo $this->session->flashdata('msg'); ?>
             </div>
             <div class="col-md-6">
+               <? $attributes = array("class" => "navbar-form navbar-left");
+               echo form_open("main/current",$attributes);?>    
+                        <div class="form-group">
+                           <label class="control-label sr-only" for="account">Счет</label>
+                              <?php 
+                                 $attributes = 'class = "form-control" id = "sel1" name="sel1"';
+                                 echo form_dropdown('sel1', $account, set_value('account'), $attributes);
+                              ?>
+                              <span class="text-danger"><?php echo form_error('sel1'); ?></span>
+                        </div>
+                        <button type="submit" id="singlebutton" class="btn btn-default">Сохранить</button>               
+               <?=form_close();?>
                <table class="table">
                   <caption class="text-left">Операции за сегодня</caption>
                   <tbody>
@@ -60,8 +72,10 @@
                      </tr>
                      <tr>
                         <td>
-                           <a href="http://traty.dev/?controller=operation&amp;action=delete&amp;operation_id=7" onclick="return confirm('Удалить операцию?')" class="glyphicon glyphicon-trash"></a>
-                           Продукты
+                           <a href="" onclick="return confirm('Удалить операцию?')" class="glyphicon glyphicon-trash"></a>
+                           <?php 
+
+                           ?>
                         </td>
                         <td class="text-right"><span class="text-danger">&nbsp;−&nbsp;<span class="whole">89</span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></td>
                      </tr>
