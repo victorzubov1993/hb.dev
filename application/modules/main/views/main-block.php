@@ -51,6 +51,7 @@
                <?php echo $this->session->flashdata('msg'); ?>
             </div>
             <div class="col-md-6">
+               <div class="row">
                <? $attributes = array("class" => "navbar-form navbar-left");
                echo form_open("main/current",$attributes);?>    
                         <div class="form-group">
@@ -63,6 +64,7 @@
                         </div>
                         <button type="submit" id="singlebutton" class="btn btn-default">Сохранить</button>               
                <?=form_close();?>
+               </div>
                <table class="table">
                   <caption class="text-left">Операции за сегодня</caption>
                   <tbody>
