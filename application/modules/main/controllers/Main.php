@@ -22,6 +22,7 @@ class Main extends MX_Controller
 	{
         $data['account'] = $this->main_model->get_account();
         $data['category'] = $this->main_model->get_category();
+        $data['last_op'] = $this->main_model->get_all_operation();
 		$data['main_content'] = 'main-block';
         $this->load->view('includes/template', $data);  			
 				

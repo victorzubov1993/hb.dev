@@ -62,7 +62,7 @@
                               ?>
                               <span class="text-danger"><?php echo form_error('sel1'); ?></span>
                         </div>
-                        <button type="submit" id="singlebutton" class="btn btn-default">Сохранить</button>               
+                        <button type="submit" id="singlebutton" class="btn btn-default">OK</button>               
                <?=form_close();?>
                </div>
                <table class="table">
