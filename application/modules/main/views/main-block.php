@@ -72,15 +72,23 @@
                         <th>Категория</th>
                         <th class="text-right">Сумма</th>
                      </tr>
+                     <? for($i = 0; $i < count($last_op); ++$i): ?>
                      <tr>
                         <td>
-                           <a href="" onclick="return confirm('Удалить операцию?')" class="glyphicon glyphicon-trash"></a>
-                           <?php 
-
-                           ?>
+                           <a href="" onclick="return confirm('Удалить операцию?')" class="glyphicon glyphicon-trash"></a> 
+                           <?=$last_op[$i]->title_categor;?>                          
                         </td>
-                        <td class="text-right"><span class="text-danger">&nbsp;−&nbsp;<span class="whole">89</span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></td>
+                        <td class="text-right">
+                           <span class="text-danger">&nbsp;−&nbsp;
+                              <span class="whole">
+                                 <?=$last_op[$i]->sum;?>
+                              </span>
+                              <span class="text-muted small">&nbsp;грн. </span>
+                           </span>
+                        </td>
                      </tr>
+                     <? endfor; ?>
+
                      <tr class="">
                         <td colspan="2">
                            <p class="text-danger"><strong>Расход за день: <span class="text-danger">&nbsp;−&nbsp;<span class="whole">89</span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></strong></p>

@@ -56,5 +56,11 @@ class Main_model extends CI_Model {
 		$query = $this->db->query('select expense.id,date,sum,description,category.title_categor,account.title from expense,category,account where expense.account_id=account.id and expense.category_id=category.id order by expense.id desc');
 		return $result = $query->result();
 		
-	}
+	}    
+
+    function get_all_operation()
+    {
+        $query = $this->db->query('select title_categor,sum from category,expense,account where expense.category_id=category.id and expense.account_id=account.id');
+        return $result = $query->result();
+    }
 }
