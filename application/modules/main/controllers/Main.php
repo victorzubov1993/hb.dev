@@ -69,5 +69,10 @@ class Main extends MX_Controller
             redirect('main/index'); 
             var_dump($_POST);               
         }
+    }
+
+    public function reports()
+    {
+        
     }	
 }
