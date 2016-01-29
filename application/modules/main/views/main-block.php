@@ -51,20 +51,7 @@
                <?php echo $this->session->flashdata('msg'); ?>
             </div>
             <div class="col-md-6">
-               <div class="row">
-               <? $attributes = array("class" => "navbar-form navbar-left");
-               echo form_open("main/current",$attributes);?>    
-                        <div class="form-group">
-                           <label class="control-label sr-only" for="account">Счет</label>
-                              <?php 
-                                 $attributes = 'class = "form-control" id = "sel1" name="sel1"';
-                                 echo form_dropdown('sel1', $account, set_value('account'), $attributes);
-                              ?>
-                              <span class="text-danger"><?php echo form_error('sel1'); ?></span>
-                        </div>
-                        <button type="submit" id="singlebutton" class="btn btn-default">OK</button>               
-               <?=form_close();?>
-               </div>
+               
                <table class="table">
                   <caption class="text-left">Операции за сегодня</caption>
                   <tbody>
@@ -91,9 +78,12 @@
 
                      <tr class="">
                         <td colspan="2">
-                           <p class="text-danger"><strong>Расход за день: <span class="text-danger">&nbsp;−&nbsp;<span class="whole">89</span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></strong></p>
+                           <p class="text-danger"><strong>Расход за день: <span class="text-danger">&nbsp;−&nbsp;<span class="whole">
+                              <?=$sum[0]['SUM(sum)']; ?>
+                           </span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></strong></p>
                         </td>
                      </tr>
+
                   </tbody>
                </table>
             </div>

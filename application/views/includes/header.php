@@ -16,7 +16,8 @@
       <script src="<?=base_url()."assets/js/jquery-1.10.2.js"?>"></script>
       <script src="<?=base_url()."assets/js/bootstrap.min.js"?>"></script>
       <script src="<?=base_url()."assets/js/bootstrap-datepicker.js"?>"></script>
-      <script src="<?=base_url()."assets/js/my.js"?>"></script>            
+      <script src="<?=base_url()."assets/js/my.js"?>"></script>
+      
       <style id="holderjs-style" type="text/css">
       </style>
    </head>

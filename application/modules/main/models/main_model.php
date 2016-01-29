@@ -58,9 +58,15 @@ class Main_model extends CI_Model {
 		
 	}    
 
-    function get_all_operation()
+    function get_all_operation($date)
     {
-        $query = $this->db->query('select title_categor,sum from category,expense,account where expense.category_id=category.id and expense.account_id=account.id');
+        $query = $this->db->query('select title_categor,sum from category,expense,account where expense.category_id=category.id and expense.account_id=account.id and expense.date= "'.$date.'"');
         return $result = $query->result();
+    }
+
+    function get_sum_of_current_day($date)
+    {
+        $query = $this->db->query('select SUM(sum) from expense,category,account where expense.category_id=category.id and expense.account_id=account.id and expense.date = "'.$date.'"');
+        return $result = $query->result_array();
     }
 }
