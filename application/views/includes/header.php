@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
                <ul class="nav navbar-nav">
                   <li class="active"><a href="http://traty.dev/">Главная</a></li>
-                  <li class=""><a href="http://traty.dev/?controller=report&amp;action=view">Отчеты</a></li>
+                  <li class=""><a href="http://hb.dev/report">Отчеты</a></li>
                   <li class=""><a href="http://traty.dev/?controller=budget&amp;action=view">Бюджет</a></li>
                   <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Настройки<b class="caret"></b></a>
