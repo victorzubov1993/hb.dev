@@ -32,13 +32,13 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="http://homebuh.dev/">HB.NET</a>
+               <a class="navbar-brand" href="http://hb.dev/">HB.NET</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
                <ul class="nav navbar-nav">
-                  <li class="active"><a href="http://traty.dev/">Главная</a></li>
-                  <li class=""><a href="http://hb.dev/report">Отчеты</a></li>
+                  <li class="active"><a href="http://hb.dev/">Главная</a></li>
+                  <li class=""><a href="http://hb.dev/main/report">Отчеты</a></li>
                   <li class=""><a href="http://traty.dev/?controller=budget&amp;action=view">Бюджет</a></li>
                   <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Настройки<b class="caret"></b></a>
