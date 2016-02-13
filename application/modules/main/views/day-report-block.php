@@ -1,0 +1,1 @@
+<a href="http://traty.dev/?controller=category&amp;action=view">Категории</a></li>
