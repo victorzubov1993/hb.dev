@@ -15,7 +15,7 @@ class Login extends MX_Controller
           $this->form_validation->CI =& $this;
           //load the login model
           $this->load->model('login_model');
-          $this->load->library('template');
+          
 
      }
 
