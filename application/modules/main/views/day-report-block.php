@@ -1,1 +1,6 @@
-<a href="http://traty.dev/?controller=category&amp;action=view">Категории</a></li>
+<div class="container">
+<a href="http://hb.dev/main/report/?r=<?=$iPrevMonth.'-'.$iPrevYear;?>
+">Предыдущий</a>
+<a href="http://hb.dev/main/report/?r=<?=$iNextMonth.'-'.$iNextYear;?>
+">Следующий</a>
+</div>
