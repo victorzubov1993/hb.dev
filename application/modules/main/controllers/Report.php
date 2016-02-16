@@ -5,6 +5,8 @@ class Report extends MX_Controller
 	function __counstruct()
 	{
 		parent::__construct();
+		$this->load->model('report_model');
+		$this->load->database();
 		
 	}
 
@@ -42,12 +44,13 @@ class Report extends MX_Controller
 			}
 		$data['iNextMonth'] = $iNextMonth;
 		$data['iNextYear'] = $iNextYear;
-		$data['main_content'] = 'month-report-block';
-		
-		
+		$data['main_content'] = 'month-report-block';	
 		$data['month'] =$this->calendar->get_month_name($iMonth);
 
-
+		$year = $_GET['year'];
+		$month = $_GET['month'];
+		$data['m_report'] = $this->report_model->get_report_by_month($year,$month);
+		
 		$this->load->view('includes/template', $data);
 	}
 
