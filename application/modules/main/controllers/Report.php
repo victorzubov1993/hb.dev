@@ -2,7 +2,7 @@
 
 class Report extends MX_Controller
 {
-	function __counstruct()
+	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('report_model');
@@ -19,12 +19,15 @@ class Report extends MX_Controller
 	public function month()
 	{
 		$this->load->library('calendar');
-		if (isset($_GET['r'])) {
-	    list($iMonth, $iYear) = explode('-', $_GET['r']);
+		if (isset($_GET['year']) && isset($_GET['month'])) {
+			
+	    list($iMonth, $iYear) = array($_GET['month'], $_GET['year']);
 		    $iMonth = (int)$iMonth;
 		    $iYear = (int)$iYear;
 		} else {
-		    list($iMonth, $iYear) = explode('-', date('n-Y'));
+			$iMonth = date("n");
+			$iYear = date("Y");
+		    list($iMonth, $iYear) = array($iMonth,$iYear);
 		}
 		$iPrevYear = $iYear;
 		$iPrevMonth = $iMonth - 1;
@@ -45,11 +48,12 @@ class Report extends MX_Controller
 		$data['iNextMonth'] = $iNextMonth;
 		$data['iNextYear'] = $iNextYear;
 		$data['main_content'] = 'month-report-block';	
-		$data['month'] =$this->calendar->get_month_name($iMonth);
+		//$data['month'] =$this->calendar->get_month_name($iMonth);
 
-		$year = $_GET['year'];
-		$month = $_GET['month'];
-		$data['m_report'] = $this->report_model->get_report_by_month($year,$month);
+
+		
+		$data['m_report'] = $this->report_model->get_report_by_month($iYear,$iMonth);
+		$data['sum_m'] = $this->report_model->sum_month($iYear,$iMonth);
 		
 		$this->load->view('includes/template', $data);
 	}
