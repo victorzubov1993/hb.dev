@@ -20,13 +20,13 @@
                   <td class="date"><?=$m_report[$i]->date;?></td>
                   <td class="account"><?=$m_report[$i]->title;?></td>
                   <td class="category"><?=$m_report[$i]->title_categor;?></td>
-                  <td class="text-right" colspan="4"><span class="amount"><span class="text-success">&nbsp;-&nbsp;<span class="whole"><?=$m_report[$i]->sum;?></span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></span></td>
+                  <td class="text-right" colspan="4"><span class="amount"><span class="text-success">&nbsp;-&nbsp;<span class="whole"><?=$m_report[$i]->sum;?></span><span class="text-muted small">&nbsp;грн. </span></span></span></td>
                </tr>
                <? endfor;?>
             </tbody>
             <tfoot>
                <tr>
-                  <td class="text-right" colspan="4"><strong>Итого: <span class="text-success">&nbsp;-&nbsp;<span class="whole"></span><?=$sum_m[0]['SUM(sum)'];?><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></strong></td>
+                  <td class="text-right" colspan="4"><strong>Итого: <span class="text-success">&nbsp;-&nbsp;<span class="whole"></span><?=$sum_m[0]['SUM(sum)'];?><span class="text-muted small">&nbsp;грн. </span></span></strong></td>
                </tr>
             </tfoot>
          </table>
