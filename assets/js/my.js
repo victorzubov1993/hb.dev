@@ -11,6 +11,6 @@
             language: "ru",
             autoclose: true,
             todayBtn: "linked"
-        });
+        });        
     })
 })(jQuery);

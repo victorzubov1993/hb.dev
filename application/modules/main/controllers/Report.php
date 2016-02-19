@@ -48,7 +48,7 @@ class Report extends MX_Controller
 		$data['iNextMonth'] = $iNextMonth;
 		$data['iNextYear'] = $iNextYear;
 		$data['main_content'] = 'month-report-block';	
-		//$data['month'] =$this->calendar->get_month_name($iMonth);
+		$data['month'] =$this->calendar->get_month_name($iMonth);
 
 
 		

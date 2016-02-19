@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <meta charset="utf-8">
@@ -14,15 +14,17 @@
       <!-- Custom styles for this template -->
       <link href="<?=base_url()."assets/css/bootstrap-datepicker3.css"?>" rel="stylesheet">
       <script src="<?=base_url()."assets/js/jquery-1.10.2.js"?>"></script>
-      <script src="<?=base_url()."assets/js/bootstrap.min.js"?>"></script>
+      <script src="<?=base_url()."assets/js/bootstrap.js"?>"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="<?=base_url()."assets/js/bootstrap-datepicker.js"?>"></script>
+      <script src="http://bootstrap-ru.com/204/assets/js/bootstrap-tab.js"></script>
       <script src="<?=base_url()."assets/js/my.js"?>"></script>
       
       <style id="holderjs-style" type="text/css">
       </style>
    </head>
    <body>
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-inverse" role="navigation">
          <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">

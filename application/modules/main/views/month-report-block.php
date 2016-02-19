@@ -1,10 +1,7 @@
-
 <div class="container">
    <a href="http://hb.dev/main/report/month/?year=<?=$iPrevYear.'&month='.$iPrevMonth;?>">Предыдущий</a>
    <a href="http://hb.dev/main/report/month/?year=<?=$iNextYear.'&month='.$iNextMonth;?>">Следующий</a>
-   <!-- <h3 class="text-info">Отчет <small><?=$iMonth;?></small><small><?=' '.$iYear;?></small></h3> -->
-   <!-- <h4><?=var_dump($m_report);?>
-      <h4><?=var_dump($_GET['month']);?> -->
+   <h3 class="text-info">Отчет <small>за <?php echo $month.' '.$_GET['year'];?></small></h3>   
    <div class="row">
       <div class="col-sm-6">
          <table class="table">
