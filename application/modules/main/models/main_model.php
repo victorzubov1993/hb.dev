@@ -31,15 +31,17 @@ class Main_model extends CI_Model {
 
     }
 
-    function get_category() 
+    function get_expense_category() 
     {
-    	$this->db->select('id');
-    	$this->db->select('title_categor');
+    	$this->db->select('category.id,title_categor',FALSE);
     	$this->db->from('category');
+        $this->db->from('operation_type');
+        $this->db->where('operation_type.operation_title', '"Расход"',FALSE);
+        $this->db->where('category.category_type','operation_type.id',FALSE);
     	$query = $this->db->get();
     	$result = $query->result();
 
-    	$category_id = array('-Выберите категоруфвиювуу-');
+    	$category_id = array('-Выберите категорию-');
     	$category_name = array('-Выберите категорию-');
 
     	for ($i=0; $i < count($result); $i++) { 
@@ -50,23 +52,38 @@ class Main_model extends CI_Model {
     	return $category_result = array_combine($category_id, $category_name);
 
     }
-	
-	function get_expense()
-	{
-		$query = $this->db->query('select expense.id,date,sum,description,category.title_categor,account.title from expense,category,account where expense.account_id=account.id and expense.category_id=category.id order by expense.id desc');
-		return $result = $query->result();
-		
-	}    
 
-    function get_all_operation($date)
+    function get_income_category() 
     {
-        $query = $this->db->query('select title_categor,sum from category,expense,account where expense.category_id=category.id and expense.account_id=account.id and expense.date= "'.$date.'"');
+        $this->db->select('category.id,title_categor',FALSE);        
+        $this->db->from('category');
+        $this->db->from('operation_type');
+        $this->db->where('operation_type.operation_title', '"Доход"',FALSE);
+        $this->db->where('category.category_type','operation_type.id',FALSE);
+        $query = $this->db->get();
+        $result = $query->result();
+
+        $category_id = array('-Выберите категорию-');
+        $category_name = array('-Выберите категорию-');
+
+        for ($i=0; $i < count($result); $i++) { 
+            array_push($category_id, $result[$i]->id);
+            array_push($category_name, $result[$i]->title_categor);
+        }
+
+        return $category_result = array_combine($category_id, $category_name);
+
+    }	    
+
+    function get_all_operation($date,$operation_type)
+    {
+        $query = $this->db->query('select title_categor,sum from category,expense,account where expense.category_id=category.id and expense.account_id=account.id and expense.date= "'.$date.'" and expense.operation_type= "'.$operation_type.'"');
         return $result = $query->result();
     }
 
-    function get_sum_of_current_day($date)
+    function get_sum_of_current_day($date,$operation_type)
     {
-        $query = $this->db->query('select SUM(sum) from expense,category,account where expense.category_id=category.id and expense.account_id=account.id and expense.date = "'.$date.'"');
+        $query = $this->db->query('select SUM(sum) from expense,category,account where expense.category_id=category.id and expense.account_id=account.id and expense.date = "'.$date.'" and expense.operation_type = "'.$operation_type.'"');
         return $result = $query->result_array();
     }
 }

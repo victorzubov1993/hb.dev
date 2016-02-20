@@ -10,7 +10,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-6">
-                     <?=form_open("main/add_operation");?>
+                     <?=form_open("main/add_expense");?>
                      <fieldset>
                         <div class="row">
                            <div class="col-xs-6">
@@ -32,7 +32,7 @@
                            <label class="control-label sr-only" for="category">Категория</label>
                            <?php
                               $attributes = 'class = "form-control" id = "sel2"';
-                              echo form_dropdown('sel2', $category, set_value('category'),$attributes);
+                              echo form_dropdown('sel2', $expense_category, set_value('category'),$attributes);
                               ?>
                            <span class="text-danger"><?php echo form_error('sel2'); ?></span>
                         </div>
@@ -66,16 +66,16 @@
                               <th>Категория</th>
                               <th class="text-right">Сумма</th>
                            </tr>
-                           <? for($i = 0; $i < count($last_op); ++$i): ?>
+                           <? for($i = 0; $i < count($last_op_exp); ++$i): ?>
                            <tr>
                               <td>
                                  <a href="" onclick="return confirm('Удалить операцию?')" class="glyphicon glyphicon-trash"></a> 
-                                 <?=$last_op[$i]->title_categor;?>                          
+                                 <?=$last_op_exp[$i]->title_categor;?>                          
                               </td>
                               <td class="text-right">
                                  <span class="text-danger">&nbsp;−&nbsp;
                                  <span class="whole">
-                                 <?=$last_op[$i]->sum;?>
+                                 <?=$last_op_exp[$i]->sum;?>
                                  </span>
                                  <span class="text-muted small">&nbsp;грн. </span>
                                  </span>
@@ -85,7 +85,7 @@
                            <tr class="">
                               <td colspan="2">
                                  <p class="text-danger"><strong>Расход за день: <span class="text-danger">&nbsp;−&nbsp;<span class="whole">
-                                    <?=$sum[0]['SUM(sum)']; ?>
+                                    <?=$sum_exp[0]['SUM(sum)']; ?>
                                     </span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></strong>
                                  </p>
                               </td>
@@ -100,7 +100,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-6">
-                     <?=form_open("main/add_operation");?>
+                     <?=form_open("main/add_income");?>
                      <fieldset>
                         <div class="row">
                            <div class="col-xs-6">
@@ -112,7 +112,7 @@
                            <div class="col-xs-6">
                               <div class="form-group">
                                  <label class="control-label sr-only" for="textinput">Дата</label>
-                                 <input type="text" class="form-control" id="date" name="date" placeholder="Дата">
+                                 <input type="text" class="form-control" id="date1" name="date" placeholder="Дата">
                                  <span class="text-danger"><?php echo form_error('date'); ?>
                                  </span> 
                               </div>
@@ -122,7 +122,7 @@
                            <label class="control-label sr-only" for="category">Категория</label>
                            <?php
                               $attributes = 'class = "form-control" id = "sel2"';
-                              echo form_dropdown('sel2', $category, set_value('category'),$attributes);
+                              echo form_dropdown('sel2', $income_category, set_value('category'),$attributes);
                               ?>
                            <span class="text-danger"><?php echo form_error('sel2'); ?></span>
                         </div>
@@ -156,16 +156,16 @@
                               <th>Категория</th>
                               <th class="text-right">Сумма</th>
                            </tr>
-                           <? for($i = 0; $i < count($last_op); ++$i): ?>
+                           <? for($i = 0; $i < count($last_op_inc); ++$i): ?>
                            <tr>
                               <td>
                                  <a href="" onclick="return confirm('Удалить операцию?')" class="glyphicon glyphicon-trash"></a> 
-                                 <?=$last_op[$i]->title_categor;?>                          
+                                 <?=$last_op_inc[$i]->title_categor;?>                          
                               </td>
                               <td class="text-right">
-                                 <span class="text-danger">&nbsp;−&nbsp;
+                                 <span class="text-danger">&nbsp;+&nbsp;
                                  <span class="whole">
-                                 <?=$last_op[$i]->sum;?>
+                                 <?=$last_op_inc[$i]->sum;?>
                                  </span>
                                  <span class="text-muted small">&nbsp;грн. </span>
                                  </span>
@@ -174,8 +174,8 @@
                            <? endfor; ?>
                            <tr class="">
                               <td colspan="2">
-                                 <p class="text-danger"><strong>Доход за день: <span class="text-danger">&nbsp;−&nbsp;<span class="whole">
-                                    <?=$sum[0]['SUM(sum)']; ?>
+                                 <p class="text-danger"><strong>Доход за день: <span class="text-danger">&nbsp;+&nbsp;<span class="whole">
+                                    <?=$sum_inc[0]['SUM(sum)']; ?>
                                     </span><span class="text-muted">.00</span>&nbsp;<span class="text-muted small">&nbsp;грн. </span></span></strong>
                                  </p>
                               </td>

@@ -50,12 +50,13 @@ class Report extends MX_Controller
 		$data['main_content'] = 'month-report-block';	
 		$data['month'] =$this->calendar->get_month_name($iMonth);
 
-
-		
-		$data['m_report'] = $this->report_model->get_report_by_month($iYear,$iMonth);
-		$data['sum_m'] = $this->report_model->sum_month($iYear,$iMonth);
+		$data['sum_m_exp'] = $this->report_model->sum_month($iYear,$iMonth,5);
+		$data['m_report_exp'] = $this->report_model->get_report_by_month($iYear,$iMonth,5);
+		$data['m_report_inc'] = $this->report_model->get_report_by_month($iYear,$iMonth,6);
+		$data['sum_m_inc'] = $this->report_model->sum_month($iYear,$iMonth,6);
 		
 		$this->load->view('includes/template', $data);
+		$this->output->enable_profiler(TRUE);
 	}
 
 	
