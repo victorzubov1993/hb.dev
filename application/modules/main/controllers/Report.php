@@ -12,6 +12,19 @@ class Report extends MX_Controller
 
 	public function index()
 	{
+		$array1 = array('january','february','march','april');
+		for($i=0;$i<5;++$i){
+			for ($j=0; $j <count($array1) ; ++$j) { 
+				$array[$array1[$j]] = array(
+					
+						'expense_sum' =>1000+$j,
+						'income_sum'  =>4000);
+			}			
+		}
+		echo "<pre>";
+		print_r($array);
+		echo "</pre>";
+		
 		$data['main_content'] = 'report-block';
 		$this->load->view('includes/template',$data);
 	}
