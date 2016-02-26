@@ -12,19 +12,38 @@ class Report extends MX_Controller
 
 	public function index()
 	{
-		$array1 = array('january','february','march','april');
-		for($i=0;$i<5;++$i){
-			for ($j=0; $j <count($array1) ; ++$j) { 
-				$array[$array1[$j]] = array(
-					
-						'expense_sum' =>1000+$j,
-						'income_sum'  =>4000);
-			}			
+		// $data['month_expense'] = $this->report_model->get_all_sum_month(2016,2,6);
+		$array2 = array();
+		$array2 = $this->report_model->get_months_count();
+		$farr = array();
+		foreach ($array2 as $k) {
+			$farr[] = $k['date'];
 		}
-		echo "<pre>";
-		print_r($array);
-		echo "</pre>";
 		
+		
+		for ($j=0; $j <count($farr) ; ++$j) {
+			$data['month_expense'] = $this->report_model->get_all_sum_month(2016,$j+1,6);
+			$array[$farr[$j]] = array(
+					
+					'expense_sum' => $data['month_expense'][0]['summa'],
+					'income_sum'  =>4000);
+		}			
+		
+		// // echo "<pre>";
+		// // print_r($array2);
+		// // echo "</pre>";
+
+		// // echo "<pre>";
+		// // print_r($farr);
+		// // echo "</pre>";
+		
+		echo "<pre>";
+		echo var_dump($data['month_expense']);
+		echo "</pre>";
+
+		echo "<pre>";
+		echo var_dump($array);
+		echo "</pre>";
 		$data['main_content'] = 'report-block';
 		$this->load->view('includes/template',$data);
 	}
