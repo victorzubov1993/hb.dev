@@ -31,7 +31,7 @@ class Main extends MX_Controller
         $data['sum_inc'] = $this->main_model->get_sum_of_current_day($date,6);
 		$data['main_content'] = 'main-block';
         $this->load->view('includes/template', $data);  			
-			$this->output->enable_profiler(TRUE);	
+			// $this->output->enable_profiler(TRUE);	
      }
      		
 	

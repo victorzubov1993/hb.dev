@@ -1,7 +1,7 @@
 <div class="container">
    <a href="http://hb.dev/main/report/month/?year=<?=$iPrevYear.'&month='.$iPrevMonth;?>">Предыдущий</a>
    <a href="http://hb.dev/main/report/month/?year=<?=$iNextYear.'&month='.$iNextMonth;?>">Следующий</a>
-   <h3 class="text-info">Отчет <small>за <?php echo $month.' '.$_GET['year'];?></small></h3>
+     <h3 class="text-info">Отчет <small>за <?php echo $month.' '.date("Y");?></small></h3>
    <div class="row">
       <div class="col-sm-6">
          <table class="table">

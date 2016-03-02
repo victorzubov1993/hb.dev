@@ -29,7 +29,11 @@ class Report_model extends CI_Model
 	function get_all_sum_month($year,$month,$operation_type)
 	{
 		$query = $this->db->query('SELECT sum( sum ) as summa, MONTH(date) as date FROM expense where expense.operation_type = "'.$operation_type.'" AND MONTH(date) = "'.$month.'" AND YEAR(date) = "'.$year.'" GROUP BY SUBSTRING( date, 6, 2 )');
-		$result = $query->result_array();		
+		$result = $query->result_array();
+		if (!isset($result[0]['summa'])) {
+					$result[0]['summa']  = (string)0;
+					$result[0]['date'] = (string)$month;
+				}
 		return $result;
 	}
 

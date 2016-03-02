@@ -19,31 +19,15 @@ class Report extends MX_Controller
 		foreach ($array2 as $k) {
 			$farr[] = $k['date'];
 		}
-		
-		
 		for ($j=0; $j <count($farr) ; ++$j) {
 			$data['month_expense'] = $this->report_model->get_all_sum_month(2016,$j+1,6);
+			$data['month_income'] = $this->report_model->get_all_sum_month(2016,$j+1,5);
 			$array[$farr[$j]] = array(
-					
+					'month'		  => $farr[$j],
 					'expense_sum' => $data['month_expense'][0]['summa'],
-					'income_sum'  =>4000);
-		}			
-		
-		// // echo "<pre>";
-		// // print_r($array2);
-		// // echo "</pre>";
-
-		// // echo "<pre>";
-		// // print_r($farr);
-		// // echo "</pre>";
-		
-		echo "<pre>";
-		echo var_dump($data['month_expense']);
-		echo "</pre>";
-
-		echo "<pre>";
-		echo var_dump($array);
-		echo "</pre>";
+					'income_sum'  => $data['month_income'][0]['summa']);
+		}	
+		$data['array'] = $array;
 		$data['main_content'] = 'report-block';
 		$this->load->view('includes/template',$data);
 	}
@@ -88,7 +72,7 @@ class Report extends MX_Controller
 		$data['sum_m_inc'] = $this->report_model->sum_month($iYear,$iMonth,6);
 		
 		$this->load->view('includes/template', $data);
-		$this->output->enable_profiler(TRUE);
+		// $this->output->enable_profiler(TRUE);
 	}
 
 	
