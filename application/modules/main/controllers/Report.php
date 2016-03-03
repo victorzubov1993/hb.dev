@@ -26,7 +26,8 @@ class Report extends MX_Controller
 					'month'		  => $farr[$j],
 					'expense_sum' => $data['month_expense'][0]['summa'],
 					'income_sum'  => $data['month_income'][0]['summa']);
-		}	
+		}
+		$json = json_encode($array);	
 		$data['array'] = $array;
 		$data['main_content'] = 'report-block';
 		$this->load->view('includes/template',$data);
