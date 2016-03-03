@@ -45,7 +45,7 @@ class Main extends MX_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('main/index');
+            redirect('main/index');
         }
         else
         {
