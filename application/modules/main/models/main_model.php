@@ -86,5 +86,12 @@ class Main_model extends CI_Model {
         $query = $this->db->query('select SUM(sum) from expense,category,account where expense.category_id=category.id and expense.account_id=account.id and expense.date = "'.$date.'" and expense.operation_type = "'.$operation_type.'"');
         return $result = $query->result_array();
     }
+
+    function get_budget_info()
+    {
+        $this->db->select(array('id','title','balance'));
+        $this->db->from('account');        
+        return $result = $this->db->get()->result();
+    }
 }
 ?>

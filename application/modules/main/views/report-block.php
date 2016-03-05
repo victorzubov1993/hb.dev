@@ -20,7 +20,14 @@
 					<? for($i = 1; $i <= count($array); ++$i) :?>
 						<tr>
 							<td>
-								<a href="http://hb.dev/main/report/month/?year=<?php echo '2016'.'&month='.$array[$i]['month'];?>"><?php echo date("F",mktime(0,0,0,$array[$i]['month']));?></a>
+								<a href="http://hb.dev/main/report/month/?year=
+								<?php
+									 echo '2016'.'&month='.$array[$i]['month'];
+								?>">
+								<?php
+									 echo date("F",mktime(0,0,0,$array[$i]['month']));
+								?>
+								</a>
 							</td>
 							<td class = "text-right">
 								<span class="text-success">

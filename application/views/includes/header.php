@@ -13,6 +13,7 @@
       <link href="<?=base_url()."assets/css/bootstrap.min.css?231е4"?>" rel="stylesheet">
       <!-- Custom styles for this template -->
       <link href="<?=base_url()."assets/css/bootstrap-datepicker3.css"?>" rel="stylesheet">
+      <link href="<?=base_url()."assets/css/my.css?23"?>" rel="stylesheet">
       <script src="<?=base_url()."assets/js/jquery-1.10.2.js"?>"></script>
       <script src="<?=base_url()."assets/js/bootstrap.js"?>"></script>
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

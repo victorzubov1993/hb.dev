@@ -1,3 +1,4 @@
+<?=modules::run('budget_widget/widget');?>
 <div class="container">
    <div class="tabs">      
       <ul class="nav nav-tabs">
