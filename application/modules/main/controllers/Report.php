@@ -15,12 +15,6 @@ class Report extends MX_Controller
 		// $data['month_expense'] = $this->report_model->get_all_sum_month(2016,2,6);
 		$array2 = array();
 		$array2 = $this->report_model->get_months_count();
-		
-		echo '<pre>';
-		print_r($array2);
-		echo '</pre>';
-
-		
 		if (isset($array2))
 		{
 			$farr = array();
