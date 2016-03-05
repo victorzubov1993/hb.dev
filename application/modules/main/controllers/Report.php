@@ -15,20 +15,32 @@ class Report extends MX_Controller
 		// $data['month_expense'] = $this->report_model->get_all_sum_month(2016,2,6);
 		$array2 = array();
 		$array2 = $this->report_model->get_months_count();
-		$farr = array();
-		foreach ($array2 as $k) {
-			$farr[] = $k['date'];
-		}
-		for ($j=0; $j <count($farr) ; ++$j) {
-			$data['month_expense'] = $this->report_model->get_all_sum_month(2016,$j+1,6);
-			$data['month_income'] = $this->report_model->get_all_sum_month(2016,$j+1,5);
-			$array[$farr[$j]] = array(
-					'month'		  => $farr[$j],
-					'expense_sum' => $data['month_expense'][0]['summa'],
-					'income_sum'  => $data['month_income'][0]['summa']);
-		}
-		$json = json_encode($array);	
-		$data['array'] = $array;
+		
+		echo '<pre>';
+		print_r($array2);
+		echo '</pre>';
+
+		
+		if (isset($array2))
+		{
+			$farr = array();
+			foreach ($array2 as $k) {
+				$farr[date("F",mktime(0,0,0,$k['date']))] = $k['date'];
+			}
+			foreach ($farr as $k => $value) {
+				$data['month_expense'] = $this->report_model->get_all_sum_month(2016,$value,6);
+				$data['month_income'] = $this->report_model->get_all_sum_month(2016,$value,5);
+				$array[$k] = array(
+						'month'		  => $value,
+						'expense_sum' => $data['month_expense'][0]['summa'],
+						'income_sum'  => $data['month_income'][0]['summa']);
+			}
+			if(isset($array))
+			{
+				$data['array'] = $array;
+			}
+		}				
+
 		$data['main_content'] = 'report-block';
 		$this->load->view('includes/template',$data);
 	}
