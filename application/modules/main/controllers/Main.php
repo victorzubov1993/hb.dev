@@ -31,7 +31,7 @@ class Main extends MX_Controller
         $data['sum_inc'] = $this->main_model->get_sum_of_current_day($date,6);
 		$data['main_content'] = 'main-block';
         $this->load->view('includes/template', $data);  			
-			// $this->output->enable_profiler(TRUE);	
+			 $this->output->enable_profiler(TRUE);	
      }
      		
 	
@@ -58,10 +58,17 @@ class Main extends MX_Controller
                 'user_id' =>'3',
                 'operation_type' =>'5'
                  );
+            $bal = array(
+                'balance' => $this->input->post('sum'),
+                );
 
-            $this->db->insert('expense',$data);
-            $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Данные успешно добавлены</div>');
+
             
+            $this->db->insert('expense',$data);
+
+            $this->db->update('account',$bal,"id=3");                                
+            $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Данные успешно добавлены</div>');
+            $this->output->enable_profiler(TRUE);   
             redirect('main/index'); 
             var_dump($_POST);               
         }
