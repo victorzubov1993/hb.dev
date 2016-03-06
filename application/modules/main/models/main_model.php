@@ -93,5 +93,16 @@ class Main_model extends CI_Model {
         $this->db->from('account');        
         return $result = $this->db->get()->result();
     }
+
+    function get_balance($id,$user_id)
+    {
+        $this->db->select('balance');
+        $this->db->from('account');
+        $this->db->where('id',$id);
+        $this->db->where('user_id',$user_id);
+        $result = $this->db->get()->result_array();
+        
+        return $result;
+    }
 }
 ?>
