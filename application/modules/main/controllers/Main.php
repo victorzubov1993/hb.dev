@@ -12,7 +12,26 @@ class Main extends MX_Controller
         $this->load->database();
         $this->load->library('form_validation');
         $this->load->model('main_model');
+        $this->load->model('report_model');
 	}
+
+    public function income()
+    {   
+        $data['account']         = $this->main_model->get_account();        
+        $data['income_category'] = $this->main_model->get_income_category(); 
+        $data['income']          = $this->report_model->get_report_by_month(2016,3,6);
+        $data['main_content']    = 'income-block';
+        $this->load->view('includes/template',$data);
+    }
+
+    public function expense()
+        {   
+        $data['account']          = $this->main_model->get_account();
+        $data['expense_category'] = $this->main_model->get_expense_category();        
+        $data['expense']          = $this->report_model->get_report_by_month(2016,3,5);
+        $data['main_content']     = 'expense-block';
+        $this->load->view('includes/template',$data);
+    }
 
 	public function index()
 	{
@@ -38,7 +57,7 @@ class Main extends MX_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            redirect('main/index');
+            redirect('main/expense');
         }
         else
         {
@@ -60,7 +79,7 @@ class Main extends MX_Controller
             $this->db->update('account',$bal,"id=3");                                
             $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Данные успешно добавлены</div>');
             $this->output->enable_profiler(TRUE);   
-            redirect('main/index');                           
+            redirect('main/expense');                           
         }
     }
 
@@ -73,7 +92,7 @@ class Main extends MX_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('main/index');
+            $this->load->view('main/income');
         }
         else
         {
@@ -95,7 +114,7 @@ class Main extends MX_Controller
             $this->db->update('account',$bal,"id=3");                                            
             $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Данные успешно добавлены</div>');
             
-            redirect('main/index');                           
+            redirect('main/income');                           
         }
     }	
 }

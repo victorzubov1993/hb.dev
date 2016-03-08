@@ -3,14 +3,8 @@
       <div class="page-title">
          Итоги отчетного периода
       </div>
-   </div>
-   <ol class="breadcrumb page-breadcrumb pull-right">
-      <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-      <li class="hidden"><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-      <li class="active">Dashboard</li>
-   </ol>
-   <div class="clearfix">
-   </div>
+   </div>   
+   <div class="clearfix"></div>
 </div>
 <div class="page-content">
    <div id="tab-general">

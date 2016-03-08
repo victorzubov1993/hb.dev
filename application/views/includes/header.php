@@ -13,8 +13,8 @@
       <link href="<?=base_url()."assets/css/bootstrap.min.css"?>" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
       <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
-      <!-- <link type="text/css" rel="stylesheet" href="<?=base_url()."assets/css/font-awesome.min.css"?>"> -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link type="text/css" rel="stylesheet" href="<?=base_url()."assets/css/font-awesome.min.css"?>">
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
       <link type="text/css" rel="stylesheet" href="<?=base_url()."assets/css/animate.css"?>">
       <link type="text/css" rel="stylesheet" href="<?=base_url()."assets/css/all.css"?>">
       <link type="text/css" rel="stylesheet" href="<?=base_url()."assets/css/main.css"?>">
@@ -26,8 +26,7 @@
       <link href="<?=base_url()."assets/css/bootstrap-datepicker3.css"?>" rel="stylesheet">
       <link href="<?=base_url()."assets/css/my.css?23"?>" rel="stylesheet">
       <script src="<?=base_url()."assets/js/jquery-1.10.2.js"?>"></script>
-      <script src="<?=base_url()."assets/js/bootstrap.js"?>"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="<?=base_url()."assets/js/bootstrap.js"?>"></script>      
       <script src="<?=base_url()."assets/js/bootstrap-datepicker.js"?>"></script>
       <script src="http://bootstrap-ru.com/204/assets/js/bootstrap-tab.js"></script>
       <script src="<?=base_url()."assets/js/my.js"?>"></script>
