@@ -1,6 +1,24 @@
-<?=modules::run('budget_widget/widget');?>
-<div class="container">
-   <div class="tabs">      
+<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+   <div class="page-header pull-left">
+      <div class="page-title">
+         Итоги отчетного периода
+      </div>
+   </div>
+   <ol class="breadcrumb page-breadcrumb pull-right">
+      <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+      <li class="hidden"><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+      <li class="active">Dashboard</li>
+   </ol>
+   <div class="clearfix">
+   </div>
+</div>
+<div class="page-content">
+   <div id="tab-general">
+      <?php echo modules::run('budget_widget/widget') ; ?>
+   </div>
+</div>
+<!-- <div class="page-content">
+   <div class="tabs">
       <ul class="nav nav-tabs">
          <li class="active"><a href="/#tab-1" data-toggle="tab">Расход</a></li>
          <li><a href="/#tab-2" data-toggle="tab">Доход</a></li>
@@ -189,5 +207,4 @@
          </div>
       </div>
    </div>
-</div>
-
+</div> -->
