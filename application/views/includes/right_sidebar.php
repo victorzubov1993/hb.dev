@@ -3,20 +3,25 @@
          <ul id="side-menu" class="nav">
             <div class="clearfix"></div>
             <li class="active">
-               <a href="dashboard.html">
+               <a href="<?=base_url()."main";?>">
                   <i class="fa fa-tachometer fa-fw">
                      <div class="icon-bg bg-orange"></div>
                   </i>
-                  <span class="menu-title">Главная</span>
+                  <span class="menu-title">Итоги отчетного периода</span>
                </a>
             </li>
-            <li>
+            <li class="dropdown-submenu">
                <a href="<?=base_url()."main/income";?>">
                   <i class="fa fa-folder-o fa-fw">
                      <div class="icon-bg bg-red"></div>
                   </i>
                   <span class="menu-title">Доходы</span>
                </a>
+               <ul class="dropdown-menu">
+                     <li></li>
+                     <li><a href="#">Second level</a></li>
+                     <li><a href="#">Second level</a></li>
+               </ul>
             </li>
             <li>
                <a href="<?php echo base_url()."main/expense";?>">
