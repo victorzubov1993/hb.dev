@@ -3,13 +3,29 @@
       <div class="page-title">
          Таблица доходов
       </div>
-   </div>
+   </div>         
    <ol class="breadcrumb page-breadcrumb pull-center">
       <div class="askquestion"><a class="searchbutton" href="#registerModal" data-toggle="modal">Новая операция</a></div>      
    </ol>   
    <div class="clearfix"></div>
 </div>
 <div class="page-content">
+<!-- <button type="submit" id="bttfilt" class="btn btn-primary">Filter</button> -->
+   <script type="text/javascript">
+         $(document).ready(function(){
+               $('#bttfilt').click(function(){
+                  $.ajax({
+                     type: 'GET',
+                     url: '<?php echo site_url('main/filter');?>',
+                     success: function(html){
+                        $('.page-content').html(html);
+                        console.log(html);
+                     }
+                  });
+               });
+         });
+   </script>
+   
    <div id="tab-general">
    	<div class="row mbl">
    		<div class="col-lg-8">
@@ -43,5 +59,6 @@
    		</div>
    	</div>
    </div>
+   <div id="page-content"></div>
 </div>
 <?php $this->load->view('includes/income-modal'); ?>

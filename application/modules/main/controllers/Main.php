@@ -15,6 +15,20 @@ class Main extends MX_Controller
         $this->load->model('report_model');
 	}
 
+    public function filter()
+    {
+        $data['expense'] = $this->report_model->get_report_by_month(2016,3,5);
+        
+        $this->load->view('main/ajax-expense-view',$data);
+        // $result = '';
+        // foreach ($filter as $expense) {
+        //     $result .='<br>Date: '.$expense->date;
+        // }
+        
+        // echo $result;
+
+    }
+
     public function income()
     {   
         $data['account']         = $this->main_model->get_account();        

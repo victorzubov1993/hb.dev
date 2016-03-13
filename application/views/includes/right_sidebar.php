@@ -11,7 +11,7 @@
                </a>
             </li>
             <li class="dropdown-submenu">
-               <a href="<?=base_url()."main/income";?>">
+               <a href="<?php echo site_url('main/income');?>">
                   <i class="fa fa-folder-o fa-fw">
                      <div class="icon-bg bg-red"></div>
                   </i>
@@ -24,7 +24,7 @@
                </ul>
             </li>
             <li>
-               <a href="<?php echo base_url()."main/expense";?>">
+               <a href="<?php echo site_url('main/expense');?>">
                   <i class="fa fa-folder-o fa-fw">
                      <div class="icon-bg bg-red"></div>
                   </i>

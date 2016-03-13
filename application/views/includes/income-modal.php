@@ -7,7 +7,7 @@
          </div>
          <div class="modal-body clearfix">
             <div id="registerModalerror" style="display: none;"></div>
-            <form id="registerModalform" action="main/add_income" method="post">
+            <form id="registerModalform" action="<?php site_url('main/add_income');?>" method="post">
                <div class="form-body pal">
                   <div class="form-group">
                         <label class="control-label sr-only" for="textinput">Сумма</label>
