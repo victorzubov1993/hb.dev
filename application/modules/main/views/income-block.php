@@ -25,7 +25,7 @@
                });
          });
    </script>
-   
+
    <div id="tab-general">
    	<div class="row mbl">
    		<div class="col-lg-8">
@@ -57,8 +57,31 @@
    				</div>
    			</div>
    		</div>
+         <div class="col-lg-4">
+            <div class="panel panel-violet">
+               <div class="panel-heading">Фильтр</div>
+               <div class="panel-body pan">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <form class="well">
+                           <div class="form-body pal">
+                              <div class="row">                                 
+                                 <div class="col-md-4">
+                                 <? for($i = 0; $i <5;++$i):?>
+                                    <label class="checkbox">
+                                       <input type="checkbox">Фильтр по категориям
+                                    </label>
+                                 <?endfor;?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-actions text-right pal"></div>
+                        </form>
+                     </div>
+                  </div>
+
+         </div>
    	</div>
-   </div>
-   <div id="page-content"></div>
+   </div>   
 </div>
 <?php $this->load->view('includes/income-modal'); ?>

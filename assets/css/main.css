@@ -3408,7 +3408,7 @@ body.sidebar-icons #wrapper #page-wrapper {
 .ptl,
 .pvl,
 .pal {
-  padding-top: 20px !important;
+  padding-top: 0px !important;
 }
 .ptxl,
 .pvxl,
@@ -7041,4 +7041,12 @@ ul.chats li.out .message {
   -moz-border-radius: 0px !important;
   border-radius: 0px !important;
   border: 1px solid #e5e5e5;
+}
+.checkbox-inline.no_indent,
+.checkbox-inline.no_indent+.checkbox-inline.no_indent {
+  margin-left: 0;
+  margin-right: 9%;
+}
+.checkbox-inline.no_indent:last-child {
+  margin-right: 0;
 }

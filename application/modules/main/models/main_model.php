@@ -104,5 +104,20 @@ class Main_model extends CI_Model {
         
         return $result;
     }
+
+    function get_category_title()
+    {
+        $this->db->select('title_categor');
+        $this->db->from('category');
+        $result = $this->db->get()->result();
+        return $result;
+    }
+    function get_account_title()
+    {
+        $this->db->select('title');
+        $this->db->from('account');
+        $result = $this->db->get()->result();
+        return $result;
+    }
 }
 ?>

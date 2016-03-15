@@ -18,6 +18,7 @@ class Main extends MX_Controller
     public function filter()
     {
         $data['expense'] = $this->report_model->get_report_by_month(2016,3,5);
+
         
         $this->load->view('main/ajax-expense-view',$data);
         // $result = '';
@@ -34,6 +35,8 @@ class Main extends MX_Controller
         $data['account']         = $this->main_model->get_account();        
         $data['income_category'] = $this->main_model->get_income_category(); 
         $data['income']          = $this->report_model->get_report_by_month(2016,3,6);
+        $data['category']        = $this->main_model->get_category_title();
+        $data['account_title']   = $this->main_model->get_account_title();
         $data['main_content']    = 'income-block';
         $this->load->view('includes/template',$data);
     }
