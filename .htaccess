@@ -1,16 +1,19 @@
-﻿#задаем кодировку сайта
+#задаем кодировку сайта
 AddDefaultCharset UTF-8
- 
+
 # Следовать за символическими ссылками или нет(симлинки)
 # Options +SymLinksIfOwnerMatch
 Options +FollowSymLinks
- 
+
 # Запрет выдачи листинга пустого каталога
 Options -Indexes
- 
+
 # По умолчанию файлы
-DirectoryIndex index.php 
- 
+DirectoryIndex index.php index.html
+
+# перенаправляем дубль главной страницы модуля page/homepage
+#Redirect 301 /page/homepage /
+
 # Включаем механизма преобразования
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|robots\.txt|assets|sitemap\.xml)

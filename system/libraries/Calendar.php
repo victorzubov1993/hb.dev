@@ -358,7 +358,7 @@ class CI_Calendar {
 		}
 		else
 		{
-			$month_names = array('1' => 'cal_january', '2' => 'cal_february', '3' => 'cal_march', '4' => 'cal_april', '5' => 'cal_mayl', '6' => 'cal_june', '7' => 'cal_july', '8' => 'cal_august', '9' => 'cal_september', '10' => 'cal_october', '11' => 'cal_november', '12' => 'cal_december');
+			$month_names = array('01' => 'cal_january', '02' => 'cal_february', '03' => 'cal_march', '04' => 'cal_april', '05' => 'cal_mayl', '06' => 'cal_june', '07' => 'cal_july', '08' => 'cal_august', '09' => 'cal_september', '10' => 'cal_october', '11' => 'cal_november', '12' => 'cal_december');
 		}
 
 		return ($this->CI->lang->line($month_names[$month]) === FALSE)
