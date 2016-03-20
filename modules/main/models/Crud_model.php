@@ -40,17 +40,42 @@ class Crud_model extends CI_Model {
 	public function delete($id)
 	{
 		
-	}
-	
-	public function getUsers()
+	}	
+
+	public function getExpense($operation_type)
 	{
+		
 		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
-		$offset = ($page-1)*$rows;		
-		$result['rows'] = $this->db->limit($rows,$offset)->get('users')->result();
-		$result['total'] = $this->db->count_all('users');
-		
-    	$this->firephp->log($rows);
-		echo json_encode($result);
+		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'expense.id';
+        $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+        $offset = ($page-1) * $rows;
+        $result = array();
+        $result['total'] = $this->db->get('expense')->num_rows();
+        $row = array();
+	        $this->db->select(array('date','sum','title_categor','title'));
+	        $this->db->from('category');
+	        $this->db->from('expense');
+	        $this->db->from('account');
+	        $this->db->where('expense.category_id','category.id',FALSE);
+	        $this->db->where('expense.account_id','account.id',FALSE);
+	        $this->db->where('operation_type',$operation_type,FALSE);
+	        $this->db->limit($rows,$offset);
+	        $this->db->order_by($sort,$order);
+	    $query = $this->db->get();
+       	$criteria = $query->result();
+	        foreach($criteria as $data)
+	        {   
+	            $row[] = array(
+	                'date'=>$data->date,
+	                'sum'=>$data->sum,
+	                'title_categor'=>$data->title_categor,
+	                'title'=>$data->title
+	            );
+	        }
+        $result=array_merge($result,array('rows'=>$row));
+        // var_dump($result);
+
+        return json_encode($result,JSON_UNESCAPED_UNICODE);
 	}
 }

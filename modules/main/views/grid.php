@@ -4,10 +4,10 @@
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
 			<tr>
-				<th field="firstname" width="50">First Name</th>
-				<th field="lastname" width="50">Last Name</th>
-				<th field="phone" width="50">Phone</th>
-				<th field="email" width="50">Email</th>
+				<th field="date" width="50">Дата</th>
+				<th field="sum" width="50">Сумма</th>
+				<th field="title_categor" width="50">Категория</th>
+				<th field="title" width="50">Счет</th>
 			</tr>
 		</thead>
 	</table>

@@ -12,8 +12,10 @@ class Crud extends CI_Controller
 
 	public function index()
 	{
+
 		if(isset($_GET['grid']))
-			echo $this->crud_model->getUsers();
+			
+			echo $this->crud_model->getExpense(6);
 		else
 			$this->load->view('main/crud');
 	}
