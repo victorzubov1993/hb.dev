@@ -1,5 +1,5 @@
-<table id="dg" title="My Users" class="easyui-datagrid" style="width:auto;height:auto;"
-			url="crud/index"
+<table id="dg" class="easyui-datagrid" style="width:100%;height:100%;"
+			
 			toolbar="#toolbar" pagination="true"
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
@@ -8,34 +8,35 @@
 				<th field="sum" width="50">Сумма</th>
 				<th field="title_categor" width="50">Категория</th>
 				<th field="title" width="50">Счет</th>
+				
 			</tr>
 		</thead>
 	</table>
 	<div id="toolbar">
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">Новая операция</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Редактировать</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Удалить операцию</a>
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
-		<div class="ftitle">User Information</div>
+		
 		<form id="fm" method="post" novalidate>
 			<div class="fitem">
-				<label>First Name:</label>
-				<input name="firstname" class="easyui-textbox" required="true">
+				<label>Дата:</label>
+				<input name="date" class="easyui-textbox" required="true">
 			</div>
 			<div class="fitem">
-				<label>Last Name:</label>
-				<input name="lastname" class="easyui-textbox" required="true">
+				<label>Сумма:</label>
+				<input name="sum" class="easyui-textbox" required="true">
 			</div>
 			<div class="fitem">
-				<label>Phone:</label>
-				<input name="phone" class="easyui-textbox">
+				<label>Категория:</label>
+				<input name="title_categor" class="easyui-textbox">
 			</div>
 			<div class="fitem">
-				<label>Email:</label>
-				<input name="email" class="easyui-textbox" validType="email">
+				<label>Счет:</label>
+				<input name="title" class="easyui-textbox" required="true">
 			</div>
 		</form>
 	</div>
@@ -43,13 +44,14 @@
 		<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
 		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
 	</div>
+	
 	<script type="text/javascript">
 		var url;
 
 		function newUser(){
-			$('#dlg').dialog('open').dialog('setTitle','New User');
+			$('#dlg').dialog('open').dialog('setTitle','Новая операция');
 			$('#fm').form('clear');
-			url = 'crud/create';
+			url = 'main/create';
 		}
 		function editUser(){
 			var row = $('#dg').datagrid('getSelected');
