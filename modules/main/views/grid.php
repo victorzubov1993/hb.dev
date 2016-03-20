@@ -1,5 +1,5 @@
 <table id="dg" title="My Users" class="easyui-datagrid" style="width:auto;height:auto;"
-			url="crud/index?grid=true"
+			url="crud/index"
 			toolbar="#toolbar" pagination="true"
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
@@ -45,6 +45,7 @@
 	</div>
 	<script type="text/javascript">
 		var url;
+
 		function newUser(){
 			$('#dlg').dialog('open').dialog('setTitle','New User');
 			$('#fm').form('clear');

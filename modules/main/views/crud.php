@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/color.css">
       <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
       <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
-      <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js');?>"></script>	
+      <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js');?>"></script>
    </head>
    <body class="easyui-layout">
       <!-- top -->
@@ -18,39 +18,45 @@
       </div>
       <!-- left -->
       <div data-options="region:'west',split:true" title="Главное меню" style="width:250px;padding1:1px;overflow:hidden;">
-         <!-- <div class="easyui-accordion" style="width:250px;height:150px;">
-            <div title="Доходы" iconCls="icon-ok" style="overflow:auto;padding:10px;">
-               <ul id="tt1" class="easyui-tree">
-                  <li>
-                     <span>Таблица доходов</span>                     
-                  </li>
-                  <li><span>Гистограма доходов</span></li>
-               </ul>
+         <div style="width:200px;height:auto;background:#7190E0;padding:5px;">
+            <div class="easyui-panel" title="Доходы" collapsible="true" style="width:200px;height:auto;padding:10px;">
+               <a href="" rel="true" data="6" class="link">Таблица доходов</a><br>
+               <span>Гистограма доходов</span>
             </div>
-            <div title="Расходы" iconCls="icon-ok" style="overflow:auto;padding:10px;">
-               <ul id="tt1" class="easyui-tree">
-                  <li>
-                     <span>Таблица расходов</span>                     
-                  </li>
-                  <li><span>Гистограма расходов</span></li>
-               </ul>
+            <br/>
+            <div class="easyui-panel" title="Расходы" collapsible="true" style="width:200px;height:auto;padding:10px;">
+               <a href="" rel="true" data="5" class="link">Таблица расходов</a><br>
+               <span>Гистограма расходов</span>
             </div>
-         </div> -->
-             <div style="width:200px;height:auto;background:#7190E0;padding:5px;">
-        <div class="easyui-panel" title="Доходы" collapsible="true" style="width:200px;height:auto;padding:10px;">
-            <span>Таблица доходов</span><br>
-            <span>Гистограма доходов</span>
-        </div>
-        <br/>
-        <div class="easyui-panel" title="Расходы" collapsible="true" style="width:200px;height:auto;padding:10px;">
-            <span>Таблица расходов</span><br>
-            <span>Гистограма расходов</span>
-        </div>        
-    </div>
+         </div>
       </div>
       <!-- center -->
       <div data-options="region:'center'" title="Main Content" style="overflow:hidden;padding:1px">
-         <?php $this->load->view('main/grid'); ?>
+         <?php $this->load->view('main/grid',$_GET); ?>
       </div>
+      <script type="text/javascript">      	
+         $('.link').click(function(){
+         	var value = $(this).attr('rel');
+         	var value1 = $(this).attr('data');
+         	var dataString = 'grid=' + value;
+         	var dataString1 = '&oper=' + value1;
+         $('#dg').datagrid({
+         	url:'crud/index?' +dataString +dataString1
+         	})
+         return false;
+         })
+         
+         $('.link').click(function(){
+         	var value = $(this).attr('rel');
+         	var value1 = $(this).attr('data');
+         	var dataString = 'grid=' + value;
+         	var dataString1 = '&oper=' + value1;
+         $('#dg').datagrid({
+         	url:'crud/index?' +dataString +dataString1
+         	})
+         return false;
+         })
+         
+      </script>
    </body>
 </html>
