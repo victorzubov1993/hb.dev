@@ -11,24 +11,52 @@ class Main_model extends CI_Model {
         parent::__construct();
     }
 
-    function get_account() 
+    function getOperationType(){
+        $this->db->select(array('id','operation_title'));
+        $this->db->from('operation_type');
+        $query = $this->db->get();
+        $result = $query->result();
+
+        foreach ($result as $data) {
+            $row[] = array(
+                'id'=>$data->id,
+                'text'=>$data->operation_title
+                );
+        }
+
+        return json_encode($row,JSON_UNESCAPED_UNICODE);
+    }
+
+    function getCategoryById($id){
+        $this->db->select(array('id','title_categor'));
+        $this->db->from('category');
+        $this->db->where('category_type',$id);
+        $query = $this->db->get();
+        $result = $query->result();
+
+        foreach ($result as $data) {
+            $row[] = array(
+                'id'=>$data->id,
+                'text'=>$data->title_categor
+                );
+        }
+        return json_encode($row,JSON_UNESCAPED_UNICODE);
+    }
+
+    function getAccount() 
     {
     	$this->db->select('id');
     	$this->db->select('title');
     	$this->db->from('account');
     	$query = $this->db->get();
     	$result = $query->result();
-
-    	$account_id = array('-Выберите счет-');
-    	$title_name = array('-Выберите счет-');
-
-    	for ($i=0; $i < count($result); $i++) { 
-    		array_push($account_id, $result[$i]->id);
-    		array_push($title_name, $result[$i]->title);
-    	}
-
-    	return $account_result = array_combine($account_id, $title_name);
-
+        foreach ($result as $data) {
+            $row[] = array(
+                'id'=>$data->id,
+                'text'=>$data->title
+                );
+        }
+        return  json_encode($row,JSON_UNESCAPED_UNICODE);
     }
 
     function get_expense_category() 
@@ -120,4 +148,3 @@ class Main_model extends CI_Model {
         return $result;
     }
 }
-?>

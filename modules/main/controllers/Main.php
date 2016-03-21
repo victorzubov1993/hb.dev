@@ -8,6 +8,7 @@ class Main extends CI_Controller
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('crud_model');
+        $this->load->model('main_model');
 	}
 
 	public function index()
@@ -19,8 +20,18 @@ class Main extends CI_Controller
 			$this->load->view('main/crud');
 	}
 
-    public function expense(){
+    public function get_operation(){
+        echo $this->main_model->getOperationType();
+    }
 
+    public function get_category(){
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            echo $this->main_model->getCategoryById($id);
+        }
+    }
+    public function get_account(){
+        echo $this->main_model->getAccount();
     }
 	 
 	

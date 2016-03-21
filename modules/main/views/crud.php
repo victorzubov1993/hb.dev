@@ -11,7 +11,7 @@
       <script type="text/javascript" src="<?php echo base_url('assets/jquery.easyui.min.js');?>"></script>
       
    </head>
-   <?php var_dump($_GET['oper']);?>
+   
    <body class="easyui-layout">
       <!-- top -->
       <div data-options="region:'north',split:true" style="height:60px;padding:10px;">

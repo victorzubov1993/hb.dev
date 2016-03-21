@@ -1,5 +1,5 @@
 <table id="dg" class="easyui-datagrid" style="width:100%;height:100%;"
-			
+			url="main/index?grid=true&oper=5"
 			toolbar="#toolbar" pagination="true"
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
@@ -23,8 +23,19 @@
 		
 		<form id="fm" method="post" novalidate>
 			<div class="fitem">
+				<label>Тип операции:</label>
+					<input id="cc1" class="easyui-combobox" data-options="
+				        valueField: 'id',
+				        textField: 'text',
+				        url: 'main/get_operation',
+				        onSelect: function(rec){
+				            var url = 'main/get_category?id='+rec.id;
+				            $('#cc2').combobox('reload', url);
+				        }">
+			</div>			
+			<div class="fitem">
 				<label>Дата:</label>
-				<input name="date" class="easyui-textbox" required="true">
+				<input id="dd" type="text" class="easyui-datebox" required="required">
 			</div>
 			<div class="fitem">
 				<label>Сумма:</label>
@@ -32,11 +43,12 @@
 			</div>
 			<div class="fitem">
 				<label>Категория:</label>
-				<input name="title_categor" class="easyui-textbox">
+				    <input id="cc2" class="easyui-combobox" data-options="valueField:'id',textField:'text'">
 			</div>
 			<div class="fitem">
 				<label>Счет:</label>
-				<input name="title" class="easyui-textbox" required="true">
+					    <input id="cc3" class="easyui-combobox" name="dept"
+        				data-options="valueField:'id',textField:'text',url:'main/get_account'">
 			</div>
 		</form>
 	</div>
@@ -46,7 +58,28 @@
 	</div>
 	
 	<script type="text/javascript">
-		var url;
+		var url;			
+			$.extend($.fn.datebox.defaults,{
+			formatter:function(date){
+				var y = date.getFullYear();
+				var m = date.getMonth()+1;
+				var d = date.getDate();
+				return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+			},
+			parser:function(s){
+				if (!s) return new Date();
+				var ss = s.split('/');
+				var d = parseInt(ss[0],10);
+				var m = parseInt(ss[1],10);
+				var y = parseInt(ss[2],10);
+				if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+					return new Date(y,m-1,d);
+				} else {
+					return new Date();
+				}
+			}
+			});
+		
 
 		function newUser(){
 			$('#dlg').dialog('open').dialog('setTitle','Новая операция');
