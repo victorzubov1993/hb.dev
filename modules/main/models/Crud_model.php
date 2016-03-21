@@ -6,25 +6,28 @@ class Crud_model extends CI_Model {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->library('fb');
 	}
 	
 	public function create()
 	{
 		$data = array(
-		'firstname' =>htmlspecialchars($_REQUEST['firstname']),
-		'lastname' => htmlspecialchars($_REQUEST['lastname']),
-		'phone' => htmlspecialchars($_REQUEST['phone']),
-		'email' => htmlspecialchars($_REQUEST['email'])
+		'operation_type' =>htmlspecialchars($_REQUEST['operation']),
+		'date' => htmlspecialchars($_REQUEST['date']),
+		'sum' => htmlspecialchars($_REQUEST['sum']),
+		'category_id' => htmlspecialchars($_REQUEST['category']),
+		'account_id' => htmlspecialchars($_REQUEST['account']),
+		'user_id'=>3
 		);
-
-		$result = $this->db->insert('users',$data);
+		fb($_REQUEST,'data',FirePHP::DUMP);
+		$result = $this->db->insert('expense',$data);
 		if ($result){
-			echo json_encode(array(
-							'id' => mysql_insert_id(),
-							'firstname' => $data['firstname'],
-							'lastname' => $data['lastname'],
-							'phone' => $data['phone'],
-							'email' => $data['email']
+			echo json_encode(array(							
+							'operation' => $data['operation'],
+							'date' => $data['date'],
+							'sum' => $data['sum'],
+							'category' => $data['category'],
+							'account'  => $data['account'],
 							));
 		} else {
 			echo json_encode(array('errorMsg'=>'Some errors occured.'));

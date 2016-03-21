@@ -24,7 +24,7 @@
 		<form id="fm" method="post" novalidate>
 			<div class="fitem">
 				<label>Тип операции:</label>
-					<input id="cc1" class="easyui-combobox" data-options="
+					<input id="cc1" class="easyui-combobox" name="operation" data-options="
 				        valueField: 'id',
 				        textField: 'text',
 				        url: 'main/get_operation',
@@ -35,7 +35,7 @@
 			</div>			
 			<div class="fitem">
 				<label>Дата:</label>
-				<input id="dd" type="text" class="easyui-datebox" required="required">
+				<input id="dd" type="text" class="easyui-datebox" name="date" required="required">
 			</div>
 			<div class="fitem">
 				<label>Сумма:</label>
@@ -43,11 +43,11 @@
 			</div>
 			<div class="fitem">
 				<label>Категория:</label>
-				    <input id="cc2" class="easyui-combobox" data-options="valueField:'id',textField:'text'">
+				    <input id="cc2" class="easyui-combobox" name="category" data-options="valueField:'id',textField:'text'">
 			</div>
 			<div class="fitem">
 				<label>Счет:</label>
-					    <input id="cc3" class="easyui-combobox" name="dept"
+					    <input id="cc3" class="easyui-combobox" name="account"
         				data-options="valueField:'id',textField:'text',url:'main/get_account'">
 			</div>
 		</form>
@@ -96,7 +96,7 @@
 		}
 		function saveUser(){
 			$('#fm').form('submit',{
-				url: url,
+				url: 'main/create',
 				onSubmit: function(){
 					return $(this).form('validate');
 				},
