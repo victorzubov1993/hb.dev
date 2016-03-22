@@ -96,20 +96,20 @@
 		}
 		function saveUser(){
 			$('#fm').form('submit',{
-				url: 'main/create',
+				url: url,
 				onSubmit: function(){
 					return $(this).form('validate');
 				},
 				success: function(result){
-					var result = eval('('+result+')');
-					if (result.errorMsg){
+					var result = eval('('+result+')');					
+					if (result.success){
+						$('#dlg').dialog('close');		
+						$('#dg').datagrid('reload');
+					} else {
 						$.messager.show({
 							title: 'Error',
-							msg: result.errorMsg
+							msg: result.msg
 						});
-					} else {
-						$('#dlg').dialog('close');		// close the dialog
-						$('#dg').datagrid('reload');	// reload the user data
 					}
 				}
 			});
