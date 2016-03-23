@@ -8,7 +8,7 @@
 				<th field="sum" width="50">Сумма</th>
 				<th field="category" width="50">Категория</th>
 				<th field="account" width="50">Счет</th>
-				<th field="operation" width="50">Тип операции</th>
+				<th field="operation" width="50" hidden="true">Тип операции</th>
 				
 			</tr>
 		</thead>
@@ -25,9 +25,10 @@
 		<form id="fm" method="post" novalidate>
 			<div class="fitem">
 				<label>Тип операции:</label>
-					<input id="cc1" class="easyui-combobox" name="operation" data-options="
+					<input id="cc1" class="easyui-combobox" name="operation" style="height: auto;" data-options="
 				        valueField: 'id',
 				        textField: 'text',
+
 				        url: 'main/get_operation',
 				        onSelect: function(rec){
 				            var url = 'main/get_category?id='+rec.id;
@@ -36,7 +37,7 @@
 			</div>			
 			<div class="fitem">
 				<label>Дата:</label>
-				<input id="dd" type="text" class="easyui-datebox" name="date" required="required">
+				<input id="dd" type="text" class="easyui-datebox" name="date" required="required" data-options="formatter:myformatter,parser:myparser">
 			</div>
 			<div class="fitem">
 				<label>Сумма:</label>
@@ -60,26 +61,24 @@
 	
 	<script type="text/javascript">
 		var url;			
-			$.extend($.fn.datebox.defaults,{
-			formatter:function(date){
-				var y = date.getFullYear();
-				var m = date.getMonth()+1;
-				var d = date.getDate();
-				return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
-			},
-			parser:function(s){
-				if (!s) return new Date();
-				var ss = s.split('/');
-				var d = parseInt(ss[0],10);
-				var m = parseInt(ss[1],10);
-				var y = parseInt(ss[2],10);
-				if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
-					return new Date(y,m-1,d);
-				} else {
-					return new Date();
-				}
-			}
-			});
+			function myformatter(date){
+            var y = date.getFullYear();
+            var m = date.getMonth()+1;
+            var d = date.getDate();
+            return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+        }
+        function myparser(s){
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0],10);
+            var m = parseInt(ss[1],10);
+            var d = parseInt(ss[2],10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+                return new Date(y,m-1,d);
+            } else {
+                return new Date();
+            }
+        }
 		
 
 		function newUser(){
@@ -88,15 +87,13 @@
 			url = 'main/create';
 		}
 		function editUser(){
-			var row = $('#dg').datagrid('getSelected');			
+			var row = $('#dg').datagrid('getSelected');		
+			alert(row.date);
 			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Edit User');
-				// $.post('main/get_category?id='+row.operation, function(rec){
-					$('#cc2').combobox('reload', 'main/get_category?id='+row.operation);
-				// });
-				$('#fm').form('load',row);
-								
-				url = 'update_user.php?id='+row.operation;
+				$('#dlg').dialog('open').dialog('setTitle','Edit User');				
+				$('#cc2').combobox('reload', 'main/get_category?id='+row.operation);	
+				$('#fm').form('load',row);								
+				url = 'main/update?id='+row.id;
 			}
 		}
 		function saveUser(){

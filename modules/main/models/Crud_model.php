@@ -37,7 +37,16 @@ class Crud_model extends CI_Model {
 	
 	public function update($id)
 	{
-		
+		$this->db->where('id', $id);
+        return $this->db->update('expense',array(
+            'date'=>$this->input->post('date',true),
+            'sum'=>$this->input->post('sum',true),
+            'account_id'=>$this->input->post('account',true),
+            'category_id'=>$this->input->post('category',true),
+            'account_id'=>$this->input->post('account',true),
+            'user_id'=>3,
+            'operation_type'=>$this->input->post('operation',true)
+        ));
 	}
 	
 	public function delete($id)
