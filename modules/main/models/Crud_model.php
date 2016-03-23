@@ -56,7 +56,7 @@ class Crud_model extends CI_Model {
         $result = array();
         $result['total'] = $this->db->get('expense')->num_rows();
         $row = array();
-	        $this->db->select(array('date','sum','title_categor','title'));
+	        $this->db->select(array('date','sum','title_categor','title','operation_type'));
 	        $this->db->from('category');
 	        $this->db->from('expense');
 	        $this->db->from('account');
@@ -72,8 +72,9 @@ class Crud_model extends CI_Model {
 	            $row[] = array(
 	                'date'=>$data->date,
 	                'sum'=>$data->sum,
-	                'title_categor'=>$data->title_categor,
-	                'title'=>$data->title
+	                'category'=>$data->title_categor,
+	                'account'=>$data->title,
+	                'operation'=>$data->operation_type
 	            );
 	        }
         $result=array_merge($result,array('rows'=>$row));

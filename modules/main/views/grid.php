@@ -6,8 +6,9 @@
 			<tr>
 				<th field="date" width="50">Дата</th>
 				<th field="sum" width="50">Сумма</th>
-				<th field="title_categor" width="50">Категория</th>
-				<th field="title" width="50">Счет</th>
+				<th field="category" width="50">Категория</th>
+				<th field="account" width="50">Счет</th>
+				<th field="operation" width="50">Тип операции</th>
 				
 			</tr>
 		</thead>
@@ -87,11 +88,15 @@
 			url = 'main/create';
 		}
 		function editUser(){
-			var row = $('#dg').datagrid('getSelected');
+			var row = $('#dg').datagrid('getSelected');			
 			if (row){
 				$('#dlg').dialog('open').dialog('setTitle','Edit User');
+				// $.post('main/get_category?id='+row.operation, function(rec){
+					$('#cc2').combobox('reload', 'main/get_category?id='+row.operation);
+				// });
 				$('#fm').form('load',row);
-				url = 'update_user.php?id='+row.id;
+								
+				url = 'update_user.php?id='+row.operation;
 			}
 		}
 		function saveUser(){
@@ -117,7 +122,7 @@
 		function destroyUser(){
 			var row = $('#dg').datagrid('getSelected');
 			if (row){
-				$.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
+				$.messager.confirm('Внимание','Вы действительно хотите удалить выбранные данные?',function(r){
 					if (r){
 						$.post('destroy_user.php',{id:row.id},function(result){
 							if (result.success){

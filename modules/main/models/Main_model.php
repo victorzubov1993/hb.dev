@@ -33,7 +33,6 @@ class Main_model extends CI_Model {
         $this->db->where('category_type',$id);
         $query = $this->db->get();
         $result = $query->result();
-
         foreach ($result as $data) {
             $row[] = array(
                 'id'=>$data->id,
