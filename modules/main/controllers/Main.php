@@ -39,7 +39,7 @@ class Main extends CI_Controller
 		if($this->crud_model->create())
 			echo json_encode(array('success'=>true));
 		else
-			echo json_encode(array('msg'=>'Gagal memasukkan data'));
+			echo json_encode(array('msg'=>'Не удалось ввести данные'),JSON_UNESCAPED_UNICODE);
 	}
 	
 	public function update($id=null) {
@@ -48,7 +48,7 @@ class Main extends CI_Controller
 		if($this->crud_model->update($id))
 			echo json_encode(array('success'=>true));
 		else
-			echo json_encode(array('msg'=>'Gagal mengubah data'));
+			echo json_encode(array('msg'=>'Не удалось обновить данные'),JSON_UNESCAPED_UNICODE);
 	}
 	
 	public function delete() {
@@ -58,6 +58,6 @@ class Main extends CI_Controller
 		if($this->crud_model->delete($id))
 			echo json_encode(array('success'=>true));
 		else
-			echo json_encode(array('msg'=>'Gagal menghapus data'));
+			echo json_encode(array('msg'=>'Не удалось удалить данные'),JSON_UNESCAPED_UNICODE);
 	}
 }

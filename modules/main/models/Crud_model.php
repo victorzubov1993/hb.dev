@@ -27,10 +27,10 @@ class Crud_model extends CI_Model {
 							'date' => $data['date'],
 							'sum' => $data['sum'],
 							'category' => $data['category'],
-							'account'  => $data['account'],
-							));
+							'account'  => $data['account'],							
+							'message'=>'Данные успешно добавлены'),JSON_UNESCAPED_UNICODE);
 		} else {
-			echo json_encode(array('errorMsg'=>'Some errors occured.'));
+			echo json_encode(array('errorMsg'=>'Some errors occured.'),JSON_UNESCAPED_UNICODE);
 
 		}
 	}
