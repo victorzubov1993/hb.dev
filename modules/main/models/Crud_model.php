@@ -37,21 +37,39 @@ class Crud_model extends CI_Model {
 	
 	public function update($id)
 	{
-		$this->db->where('id', $id);
-        return $this->db->update('expense',array(
-            'date'=>$this->input->post('date',true),
+		$data = array(
+			'id'=>$id,
+			'date'=>$this->input->post('date',true),
             'sum'=>$this->input->post('sum',true),
             'account_id'=>$this->input->post('account',true),
-            'category_id'=>$this->input->post('category',true),
-            'account_id'=>$this->input->post('account',true),
+            'category_id'=>$this->input->post('category',true),            
             'user_id'=>3,
             'operation_type'=>$this->input->post('operation',true)
-        ));
+            );
+		$this->db->where('id', $id);
+        $result = $this->db->update('expense',$data);
+        if($result){
+        	echo json_encode(array(
+        		'id'=>$data['id'],
+        		'date'=>$data['date'],
+        		'sum'=>$data['sum'],
+        		'account_id'=>$data['account_id'],
+        		'category_id'=>$data['category_id'],
+        		'user_id'=>3,
+        		'operation_type'=>$data['operation_type']),JSON_UNESCAPED_UNICODE);
+        } else {
+        	echo json_encode(array('errorMsg'=>'Some errors occured.'),JSON_UNESCAPED_UNICODE);
+        }
 	}
 	
 	public function delete($id)
 	{
-		
+		$result = $this->db->delete('expense', array('id' => $id));
+		if ($result){
+			echo json_encode(array('success'=>true));
+		} else {
+			echo json_encode(array('errorMsg'=>'Some errors occured.'));
+		}
 	}	
 
 	public function getExpense($operation_type)
@@ -65,7 +83,7 @@ class Crud_model extends CI_Model {
         $result = array();
         $result['total'] = $this->db->get('expense')->num_rows();
         $row = array();
-	        $this->db->select(array('date','sum','title_categor','title','operation_type'));
+	        $this->db->select(array('expense.id','date','sum','title_categor','title','operation_type'),FALSE);
 	        $this->db->from('category');
 	        $this->db->from('expense');
 	        $this->db->from('account');
@@ -79,6 +97,7 @@ class Crud_model extends CI_Model {
 	        foreach($criteria as $data)
 	        {   
 	            $row[] = array(
+	            	'id'=>$data->id,
 	                'date'=>$data->date,
 	                'sum'=>$data->sum,
 	                'category'=>$data->title_categor,
@@ -87,8 +106,6 @@ class Crud_model extends CI_Model {
 	            );
 	        }
         $result=array_merge($result,array('rows'=>$row));
-        // var_dump($result);
-
         return json_encode($result,JSON_UNESCAPED_UNICODE);
 	}
 }

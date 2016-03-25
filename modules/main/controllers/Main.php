@@ -42,9 +42,10 @@ class Main extends CI_Controller
 			echo json_encode(array('msg'=>'Не удалось ввести данные'),JSON_UNESCAPED_UNICODE);
 	}
 	
-	public function update($id=null) {
+	public function update() {
 		if(!isset($_POST))	
 			show_404();		
+        $id = $_GET['id'];
 		if($this->crud_model->update($id))
 			echo json_encode(array('success'=>true));
 		else
@@ -54,7 +55,7 @@ class Main extends CI_Controller
 	public function delete() {
 		if(!isset($_POST))	
 			show_404();		
-		$id = intval(addslashes($_POST['id']));
+		$id = intval(addslashes($_GET['id']));
 		if($this->crud_model->delete($id))
 			echo json_encode(array('success'=>true));
 		else

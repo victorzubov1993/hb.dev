@@ -4,6 +4,7 @@
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
 			<tr>
+				<th field="id" width="50" hidden="true">ID</th>
 				<th field="date" width="50">Дата</th>
 				<th field="sum" width="50">Сумма</th>
 				<th field="category" width="50">Категория</th>
@@ -22,7 +23,7 @@
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
 			closed="true" buttons="#dlg-buttons">
 		
-		<form id="form" method="post">
+		<form id="fm" method="post">
 			<div class="fitem">
 				<label>Тип операции:</label>
 					<input id="cc1" class="easyui-combobox" name="operation" style="height: auto;" data-options="
@@ -79,11 +80,9 @@
                 return new Date();
             }
         }
-		
-
 		function newUser(){
 			$('#dlg').dialog('open').dialog('setTitle','Новая операция');
-			$('#form').form('clear');
+			$('#fm').form('clear');
 			url = 'main/create';
 		}
 		function editUser(){
@@ -91,40 +90,33 @@
 			if (row){
 				$('#dlg').dialog('open').dialog('setTitle','Edit User');				
 				$('#cc2').combobox('reload', 'main/get_category?id='+row.operation);	
-				$('#form').form('load',row);								
+				$('#fm').form('load',row);								
 				url = 'main/update?id='+row.id;
 			}
 		}
 		function saveUser(){
-			$('#form').form('submit',{
-				url: 'main/create',
-				ajax:'true',			
-				success: function(result){
-						$('#dlg').dialog('close');		
-						$('#dg').datagrid('reload');
+			$('#fm').form('submit',{
+				url: url,
+				ajax:'true',							
+				success: function(result){						
+					$('#dlg').dialog('close');		// close the dialog
+					$('#dg').datagrid('reload');	// reload the user data
 					}
-				
-			});
+				});
 		}
-		// function destroyUser(){
-		// 	var row = $('#dg').datagrid('getSelected');
-		// 	if (row){
-		// 		$.messager.confirm('Внимание','Вы действительно хотите удалить выбранные данные?',function(r){
-		// 			if (r){
-		// 				$.post('destroy_user.php',{id:row.id},function(result){
-		// 					if (result.success){
-		// 						$('#dg').datagrid('reload');	// reload the user data
-		// 					} else {
-		// 						$.messager.show({	// show error message
-		// 							title: 'Error',
-		// 							msg: result.errorMsg
-		// 						});
-		// 					}
-		// 				},'json');
-		// 			}
-		// 		});
-		// 	}
-		// }
+		function destroyUser(){
+			var row = $('#dg').datagrid('getSelected');
+			if (row){
+				$.messager.confirm('Внимание','Вы действительно хотите удалить выбранные данные?',function(r){
+					if (r){
+						$.post('main/delete?id='+row.id ,
+							function(result){
+								$('#dg').datagrid('reload');
+							});
+					}
+				});
+			}
+		}
 	</script>
 	<style type="text/css">
 		#fm{
