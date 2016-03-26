@@ -4,7 +4,7 @@
      
       <div class="contenti" data-options="region:'center'" style="overflow:hidden;padding:1px">
 
-         <?php $this->load->view('main/expense-grid'); ?>
+         <?php $this->load->view('main/main-page'); ?>
 
       </div>
          

@@ -28,10 +28,7 @@ class Main extends CI_Controller
     }
 
 	public function index()	{
-		if(isset($_GET['grid'])&& isset($_GET['oper']))			
-			echo $this->crud_model->getExpense($_GET['oper']);
-		// else
-		// 	$this->load->view('main/crud');
+		$this->load->view('main');
 	}
 
     public function get_operation(){
