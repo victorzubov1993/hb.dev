@@ -22,46 +22,46 @@
       <div data-options="region:'west',split:true" title="Главное меню" style="width:250px;padding1:1px;overflow:hidden;">
          <div style="width:200px;height:auto;background:#7190E0;padding:5px;">
             <div class="easyui-panel" title="Доходы" collapsible="true" style="width:200px;height:auto;padding:10px;">
-               <a href="" rel="true" data="6" class="link" style="text-decoration: none;">Таблица доходов</a><br>
+               <a href="./income" rel="true" data="6" class="link" style="text-decoration: none;">Таблица доходов</a><br>
                <span>Гистограма доходов</span>
             </div>
             <br/>
             <div class="easyui-panel" title="Расходы" collapsible="true" style="width:200px;height:auto;padding:10px;">
-               <a href="" rel="true" data="5" class="link" style="text-decoration: none;">Таблица расходов</a><br>
+               <a href="./expense" rel="true" data="5" class="link" style="text-decoration: none;">Таблица расходов</a><br>
                <span>Гистограма расходов</span>
             </div>
          </div>
       </div>
       <!-- center -->
       <div class="contenti" data-options="region:'center'" style="overflow:hidden;padding:1px">
-         <?php $this->load->view('main/grid'); ?>
+         <?php $this->load->view('main/income-grid'); ?>
       </div>
       <script type="text/javascript">
-		    $(document).ready(function(){
-		   		$('.link').click(function(){
-		         	var value = $(this).attr('rel');
-		         	var value1 = $(this).attr('data');
-		         	var dataString = 'grid=' + value;
-		         	var dataString1 = '&oper=' + value1;
-		        $('#dg').datagrid({
-		         	url:'main/index?' +dataString +dataString1
-		         	})
+		 //    $(document).ready(function(){
+		 //   		$('.link').click(function(){
+		 //         	var value = $(this).attr('rel');
+		 //         	var value1 = $(this).attr('data');
+		 //         	var dataString = 'grid=' + value;
+		 //         	var dataString1 = '&oper=' + value1;
+		 //        $('#dg').datagrid({
+		 //         	url:'main/index?' +dataString +dataString1
+		 //         	})
 		        
-		         return false;
+		 //         return false;
 		         
-		        })
+		 //        })
 		         
-		   		$('.link').click(function(){
-		         	var value = $(this).attr('rel');
-		         	var value1 = $(this).attr('data');
-		         	var dataString = 'grid=' + value;
-		         	var dataString1 = '&oper=' + value1;
-		        $('#dg').datagrid({
-		         	url:'main/index?' +dataString +dataString1
-		         	})
-		         return false;
-		        })
-			});
+		 //   		$('.link').click(function(){
+		 //         	var value = $(this).attr('rel');
+		 //         	var value1 = $(this).attr('data');
+		 //         	var dataString = 'grid=' + value;
+		 //         	var dataString1 = '&oper=' + value1;
+		 //        $('#dg').datagrid({
+		 //         	url:'main/index?' +dataString +dataString1
+		 //         	})
+		 //         return false;
+		 //        })
+			// });
       </script>      
    </body>
 </html>

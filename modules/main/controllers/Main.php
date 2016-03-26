@@ -12,11 +12,26 @@ class Main extends CI_Controller
         $this->load->library('fb');
 	}
 
+    public function expense(){
+        if(isset($_GET['grid'])&& isset($_GET['oper']))         
+            echo $this->crud_model->getExpense($_GET['oper']);
+        else
+            $this->load->view('main/expense-crud');
+
+    }
+
+    public function income(){
+     if(isset($_GET['grid'])&& isset($_GET['oper']))         
+            echo $this->crud_model->getExpense($_GET['oper']);
+        else
+            $this->load->view('main/income-crud');
+    }
+
 	public function index()	{
 		if(isset($_GET['grid'])&& isset($_GET['oper']))			
 			echo $this->crud_model->getExpense($_GET['oper']);
-		else
-			$this->load->view('main/crud');
+		// else
+		// 	$this->load->view('main/crud');
 	}
 
     public function get_operation(){

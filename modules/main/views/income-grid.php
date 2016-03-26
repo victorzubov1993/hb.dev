@@ -1,5 +1,5 @@
 <table id="dg" class="easyui-datagrid" style="width:100%;height:100%;"
-			url="main/index?grid=true&oper=5"
+			url="./income?grid=true&oper=6"
 			toolbar="#toolbar" pagination="true"
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
@@ -30,9 +30,9 @@
 				        valueField: 'id',
 				        textField: 'text',
 
-				        url: 'main/get_operation',
+				        url: './get_operation',
 				        onSelect: function(rec){
-				            var url = 'main/get_category?id='+rec.id;
+				            var url = './get_category?id='+rec.id;
 				            $('#cc2').combobox('reload', url);
 				        }">
 			</div>			
@@ -51,7 +51,7 @@
 			<div class="fitem">
 				<label>Счет:</label>
 					    <input id="cc3" class="easyui-combobox" name="account"
-        				data-options="valueField:'id',textField:'text',url:'main/get_account'">
+        				data-options="valueField:'id',textField:'text',url:'./get_account'">
 			</div>
 		</form>
 	</div>
@@ -83,15 +83,15 @@
 		function newUser(){
 			$('#dlg').dialog('open').dialog('setTitle','Новая операция');
 			$('#fm').form('clear');
-			url = 'main/create';
+			url = './create';
 		}
 		function editUser(){
 			var row = $('#dg').datagrid('getSelected');					
 			if (row){
 				$('#dlg').dialog('open').dialog('setTitle','Edit User');				
-				$('#cc2').combobox('reload', 'main/get_category?id='+row.operation);	
+				$('#cc2').combobox('reload', './get_category?id='+row.operation);	
 				$('#fm').form('load',row);								
-				url = 'main/update?id='+row.id;
+				url = './update?id='+row.id;
 			}
 		}
 		function saveUser(){
@@ -109,7 +109,7 @@
 			if (row){
 				$.messager.confirm('Внимание','Вы действительно хотите удалить выбранные данные?',function(r){
 					if (r){
-						$.post('main/delete?id='+row.id ,
+						$.post('./delete?id='+row.id ,
 							function(result){
 								$('#dg').datagrid('reload');
 							});
