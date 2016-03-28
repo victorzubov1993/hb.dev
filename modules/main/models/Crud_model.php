@@ -28,9 +28,9 @@ class Crud_model extends CI_Model {
 							'sum' => $data['sum'],
 							'category' => $data['category'],
 							'account'  => $data['account'],							
-							'message'=>'Данные успешно добавлены'),JSON_UNESCAPED_UNICODE);
+							'message'=>'Данные успешно добавлены'));
 		} else {
-			echo json_encode(array('errorMsg'=>'Some errors occured.'),JSON_UNESCAPED_UNICODE);
+			echo json_encode(array('errorMsg'=>'Some errors occured.'));
 
 		}
 	}
@@ -56,9 +56,9 @@ class Crud_model extends CI_Model {
         		'account_id'=>$data['account_id'],
         		'category_id'=>$data['category_id'],
         		'user_id'=>3,
-        		'operation_type'=>$data['operation_type']),JSON_UNESCAPED_UNICODE);
+        		'operation_type'=>$data['operation_type']));
         } else {
-        	echo json_encode(array('errorMsg'=>'Some errors occured.'),JSON_UNESCAPED_UNICODE);
+        	echo json_encode(array('errorMsg'=>'Some errors occured.'));
         }
 	}
 	
@@ -106,6 +106,6 @@ class Crud_model extends CI_Model {
 	            );
 	        }
         $result=array_merge($result,array('rows'=>$row));
-        return json_encode($result,JSON_UNESCAPED_UNICODE);
+        return json_encode($result);
 	}
 }

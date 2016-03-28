@@ -24,7 +24,7 @@ class Main_model extends CI_Model {
                 );
         }
 
-        return json_encode($row,JSON_UNESCAPED_UNICODE);
+        return json_encode($row);
     }
 
     function getCategoryById($id){
@@ -39,7 +39,7 @@ class Main_model extends CI_Model {
                 'text'=>$data->title_categor
                 );
         }
-        return json_encode($row,JSON_UNESCAPED_UNICODE);
+        return json_encode($row);
     }
 
     function getAccount() 
@@ -55,7 +55,7 @@ class Main_model extends CI_Model {
                 'text'=>$data->title
                 );
         }
-        return  json_encode($row,JSON_UNESCAPED_UNICODE);
+        return  json_encode($row);
     }
 
     function get_expense_category() 

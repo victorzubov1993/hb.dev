@@ -1,5 +1,5 @@
 <table id="dg1" class="easyui-datagrid" style="width:100%;height:100%;"
-			url="http://ci3.dev/main/expense?grid=true&oper=5"
+			url="http://hb.dev/main/expense?grid=true&oper=5"
 			toolbar="#toolbar" pagination="true"
 			rownumbers="true" fitColumns="true" singleSelect="true">
 		<thead>
