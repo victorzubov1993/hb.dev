@@ -22,6 +22,14 @@ class Main extends CI_Controller
 	}
 	
 	function filter(){
+		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'expense.id';
+        $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+        $offset = ($page-1) * $rows;
+        $result = array();
+        $result['total'] = $this->db->get('expense')->num_rows();
+        $row = array();
 		
 		if (!empty($_POST["filter"])) {
 		$where = "";		
@@ -29,7 +37,7 @@ class Main extends CI_Controller
 			$ids=$_POST["vendors"];
 			$inQuery = implode(',', $ids);
 			$where = Main::addFilterCondition($where, 'expense.category_id IN ('. $inQuery .')');
-		}		
+		}	
 
 		$sql = 'SELECT expense.id,expense.date,expense.sum,title_categor,title,expense.operation_type
 				FROM category,expense,account
@@ -40,8 +48,8 @@ class Main extends CI_Controller
 		else $sql .= " WHERE ".$second;
 		
 		$query = $this->db->query($sql);
-		$result = $query->result();
-		foreach ($result as $data) {
+		$resultat = $query->result();
+		foreach ($resultat as $data) {
 			$row[] = array(
 			'id'=>$data->id,
 			'date'=>$data->date,
@@ -51,17 +59,15 @@ class Main extends CI_Controller
 			'operation_type'=>$data->operation_type
 			);
 		}
-		echo "<pre>";
-		var_export($row);
-		echo "</pre>";
-		
-		return json_encode($row);
+		$result=array_merge($result,array('rows'=>$row));
+        return json_encode($result);
 	}
 	}
 
     public function expense(){
         if(isset($_GET['grid'])&& isset($_GET['oper']))         
-            echo $this->crud_model->getExpense($_GET['oper']);
+             echo $this->crud_model->getExpense($_GET['oper']);
+				//Main::filter();
         else
             $this->load->view('main/expense-crud');
 
