@@ -11,6 +11,53 @@ class Main extends CI_Controller
         $this->load->model('main_model');
         $this->load->library('fb');
 	}
+	
+	function addFilterCondition($where, $add, $and = true){
+		if ($where) {
+			if ($and) $where .= " AND $add";
+			else $where .= " OR $add";
+		}
+		else $where = $add;
+		return $where;
+	}
+	
+	function filter(){
+		
+		if (!empty($_POST["filter"])) {
+		$where = "";		
+		if ($_POST["vendors"]) {
+			$ids=$_POST["vendors"];
+			$inQuery = implode(',', $ids);
+			$where = Main::addFilterCondition($where, 'expense.category_id IN ('. $inQuery .')');
+		}		
+
+		$sql = 'SELECT expense.id,expense.date,expense.sum,title_categor,title,expense.operation_type
+				FROM category,expense,account
+		';
+		$second='expense.category_id = category.id AND expense.account_id = account.id 
+				AND operation_type = 5';	
+		if ($where) $sql .= " WHERE $where AND ".$second;
+		else $sql .= " WHERE ".$second;
+		
+		$query = $this->db->query($sql);
+		$result = $query->result();
+		foreach ($result as $data) {
+			$row[] = array(
+			'id'=>$data->id,
+			'date'=>$data->date,
+			'sum'=>$data->sum,
+			'title_categor'=>$data->title_categor,
+			'title'=>$data->title,
+			'operation_type'=>$data->operation_type
+			);
+		}
+		echo "<pre>";
+		var_export($row);
+		echo "</pre>";
+		
+		return json_encode($row);
+	}
+	}
 
     public function expense(){
         if(isset($_GET['grid'])&& isset($_GET['oper']))         

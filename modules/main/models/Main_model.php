@@ -26,6 +26,9 @@ class Main_model extends CI_Model {
 
         return json_encode($row);
     }
+	
+	
+	
 
     function getCategoryById($id){
         $this->db->select(array('id','title_categor'));
