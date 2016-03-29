@@ -59,62 +59,82 @@
 	</div>
 	
 	<script type="text/javascript">
-		var url;			
+			$('#dl').datalist({
+				url: './get_category?id=5',
+				checkbox: true,
+				lines: false,
+				singleSelect: false
+			});	
+			
+			$('#d3').datalist({
+				url: './get_category?id=5',
+				checkbox: true,
+				lines: true,
+				singleSelect: false
+			});
+			
+			$('#d2').datalist({
+				url: './get_account',
+				checkbox: true,
+				lines: true,
+				singleSelect: false
+			});
+			var url;			
 			function myformatter(date){
-            var y = date.getFullYear();
-            var m = date.getMonth()+1;
-            var d = date.getDate();
-            return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
-        }
-        function myparser(s){
-            if (!s) return new Date();
-            var ss = (s.split('-'));
-            var y = parseInt(ss[0],10);
-            var m = parseInt(ss[1],10);
-            var d = parseInt(ss[2],10);
-            if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
-                return new Date(y,m-1,d);
-            } else {
-                return new Date();
-            }
-        }
-		function newUser(){
-			$('#dlg').dialog('open').dialog('setTitle','Новая операция');
-			$('#fm').form('clear');
-			url = './create';
-		}
-		function editUser(){
-			var row = $('#dg1').datagrid('getSelected');					
-			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Edit User');				
-				$('#cc2').combobox('reload', './get_category?id='+row.operation);	
-				$('#fm').form('load',row);								
-				url = './update?id='+row.id;
+				var y = date.getFullYear();
+				var m = date.getMonth()+1;
+				var d = date.getDate();
+				return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
 			}
-		}
-		function saveUser(){
-			$('#fm').form('submit',{
-				url: url,
-				ajax:'true',							
-				success: function(result){						
-					$('#dlg').dialog('close');		// close the dialog
-					$('#dg1').datagrid('reload');	// reload the user data
-					}
-				});
-		}
-		function destroyUser(){
-			var row = $('#dg1').datagrid('getSelected');
-			if (row){
-				$.messager.confirm('Внимание','Вы действительно хотите удалить выбранные данные?',function(r){
-					if (r){
-						$.post('./delete?id='+row.id ,
-							function(result){
-								$('#dg1').datagrid('reload');
-							});
-					}
-				});
+			function myparser(s){
+				if (!s) return new Date();
+				var ss = (s.split('-'));
+				var y = parseInt(ss[0],10);
+				var m = parseInt(ss[1],10);
+				var d = parseInt(ss[2],10);
+				if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+					return new Date(y,m-1,d);
+				} else {
+					return new Date();
+				}
 			}
-		}
+			function newUser(){
+				$('#dlg').dialog('open').dialog('setTitle','Новая операция');
+				$('#fm').form('clear');
+				url = './create';
+			}
+			function editUser(){
+				var row = $('#dg1').datagrid('getSelected');					
+				if (row){
+					$('#dlg').dialog('open').dialog('setTitle','Edit User');				
+					$('#cc2').combobox('reload', './get_category?id='+row.operation);	
+					$('#fm').form('load',row);								
+					url = './update?id='+row.id;
+				}
+			}
+			function saveUser(){
+				$('#fm').form('submit',{
+					url: url,
+					ajax:'true',							
+					success: function(result){						
+						$('#dlg').dialog('close');		// close the dialog
+						$('#dg1').datagrid('reload');	// reload the user data
+						}
+					});
+			}
+			function destroyUser(){
+				var row = $('#dg1').datagrid('getSelected');
+				if (row){
+					$.messager.confirm('Внимание','Вы действительно хотите удалить выбранные данные?',function(r){
+						if (r){
+							$.post('./delete?id='+row.id ,
+								function(result){
+									$('#dg1').datagrid('reload');
+								});
+						}
+					});
+				}
+			}
 	</script>
 	<style type="text/css">
 		#fm{

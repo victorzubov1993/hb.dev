@@ -1,6 +1,5 @@
 <body class="easyui-layout">
-      <!-- top -->
-      <div data-options="region:'north',split:true" style="height:60px;padding:10px;">
+      <div data-options="region:'north',split:true" style="height:99%0%;padding:10px;">
          <a href="index" style="font-size:30px; text-decoration: none;">Автоматизация учета личных средств</a>
          <span style="float:right; font-size:30px"></span>
       </div>
@@ -18,22 +17,13 @@
             </div>
          </div>
       </div>
-	  <div data-options="region:'east',split:true" title="Фильтр" style="width:250px;padding1:1px;overflow:hidden;">
-		<form name="form" method="post" action="expense">
-		<ul>			
-			<li> Категории:
-				<ul>
-					<li><input id="filter_03" type="checkbox" name="vendors[]" value="7"><label for="filter_03">Проезд</label></li>
-					<li><input id="filter_04" type="checkbox" name="vendors[]" value="8"><label for="filter_04">Мобильная связь</label></li>					
-				</ul>	
-			</li>
-			<li> Счет:
-				<ul>
-					<li><input id="filter_05" type="checkbox" name="vendors[]" value="3"><label for="filter_05">ПриватБанк</label></li>
-					<li><input id="filter_06" type="checkbox" name="vendors[]" value="1"><label for="filter_06">Дом</label></li>					
-				</ul>	
-			</li>
-		</ul>
-		<input type="submit" name="filter" value="Подобрать" />
-	</form>
+	  <div data-options="region:'east',split:true" title="Фильтр" style="width:250px;height:0px;padding1:1px;overflow:hidden;">
+		<form id="form-filter" method="post">
+			<div class="easyui-panel" title="Фильтр по категориям" collapsible="true" style="width:200px;height:250px;padding:10px;">
+				<div id="dl"></div>
+			</div>
+			<div class="easyui-panel" title="Фильтр по счетам" collapsible="true" style="width:200px;height:auto;padding:10px;">
+				<div id="d2"></div>
+			</div>			
+		</form>
 	  </div>
