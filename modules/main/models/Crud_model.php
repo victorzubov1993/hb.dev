@@ -9,6 +9,61 @@ class Crud_model extends CI_Model {
 		$this->load->library('fb');
 	}
 	
+	function addFilterCondition($where, $add, $and = true){
+		if ($where) {
+			if ($and) $where .= " AND $add";
+			else $where .= " OR $add";
+		}
+		else $where = $add;
+		return $where;
+	}
+	
+	function filter(){
+		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+		$sort = isset($_POST['sort']) ? strval($_POST['sort']) : 'expense.id';
+        $order = isset($_POST['order']) ? strval($_POST['order']) : 'asc';
+        $offset = ($page-1) * $rows;
+        $result = array();
+        $result['total'] = $this->db->get('expense')->num_rows();
+        $row = array();
+		
+		if (!empty($_POST["filter"])) {
+		$where = "";		
+		if (isset($_POST["vendors"])) {
+			$ids=$_POST["vendors"];
+			$inQuery = implode(',', $ids);
+			$where = Crud_model::addFilterCondition($where, 'expense.category_id IN ('. $inQuery .')');
+		}	
+
+		$sql = 'SELECT expense.id,expense.date,expense.sum,title_categor,title,expense.operation_type
+				FROM category,expense,account
+		';
+		$second='expense.category_id = category.id AND expense.account_id = account.id 
+				AND operation_type = 5';	
+		if ($where) $sql .= " WHERE $where AND ".$second;
+		else $sql .= " WHERE ".$second;
+		
+		$query = $this->db->query($sql);
+		$resultat = $query->result();
+		foreach ($resultat as $data) {
+			$row[] = array(
+			'id'=>$data->id,
+			'date'=>$data->date,
+			'sum'=>$data->sum,
+			'title_categor'=>$data->title_categor,
+			'title'=>$data->title,
+			'operation_type'=>$data->operation_type
+			);
+		}
+		$result=array_merge($result,array('rows'=>$row));
+		// echo "<pre>";
+		// var_export($result);
+		// echo "</pre>";
+        return json_encode($result);
+	}
+	}
+	
 	public function create()
 	{
 		$data = array(
@@ -106,6 +161,9 @@ class Crud_model extends CI_Model {
 	            );
 	        }
         $result=array_merge($result,array('rows'=>$row));
+		// echo "<pre>";
+		// var_export($result);
+		// echo "</pre>";
         return json_encode($result);
 	}
 }

@@ -19,7 +19,7 @@
          </div>
       </div>
 	  <div data-options="region:'east',split:true" title="Фильтр" style="width:250px;padding1:1px;overflow:hidden;">
-		<form name="form" method="post" action="filter">
+		<form name="form" method="post" action="expense">
 		<ul>			
 			<li> Категории:
 				<ul>

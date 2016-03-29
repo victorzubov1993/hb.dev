@@ -9,8 +9,7 @@
 				<th field="sum" width="50">Сумма</th>
 				<th field="category" width="50">Категория</th>
 				<th field="account" width="50">Счет</th>
-				<th field="operation" width="50" hidden="true">Тип операции</th>
-				
+				<th field="operation" width="50" hidden="true">Тип операции</th>				
 			</tr>
 		</thead>
 	</table>
@@ -21,8 +20,7 @@
 	</div>
 	
 	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-			closed="true" buttons="#dlg-buttons">
-		
+			closed="true" buttons="#dlg-buttons">		
 		<form id="fm" method="post">
 			<div class="fitem">
 				<label>Тип операции:</label>
